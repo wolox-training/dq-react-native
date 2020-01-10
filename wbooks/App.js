@@ -1,44 +1,47 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { StyleSheet, FlatList, View } from 'react-native';
 import BookCell from './src/app/components/BookCell';
 
-const App: () => React$Node = () => {
+function App ({ prop1, ...props }) {
   return (
-    <View style={styles.cell}>
-      <BookCell></BookCell>
-    </View>
+    <FlatList
+      style={styles.list}
+      ItemSeparatorComponent={separator}
+      data={[
+        {title: "Some Looooooooooooooooooooooooooooooooong title", subtitle: "Jhon Doe"},
+        {title: "Some Looooooooooooooooooooooooooooooooong title", subtitle: "Jhon Doe"},
+        {title: "Some Looooooooooooooooooooooooooooooooong title", subtitle: "Jhon Doe"},
+        {title: "Some Looooooooooooooooooooooooooooooooong title", subtitle: "Jhon Doe"},
+        {title: "Some Looooooooooooooooooooooooooooooooong title", subtitle: "Jhon Doe"},
+        {title: "Some Looooooooooooooooooooooooooooooooong title", subtitle: "Jhon Doe"}
+      ]}
+      renderItem={renderBook}
+      keyExtractor={getBookKey}
+    />
   );
-};
+}
+
+function renderBook({item}) {
+  return <BookCell title={item.title} subtitle={item.subtitle} ></BookCell>
+}
+
+function separator() {
+  return <View style={styles.cell} ></View>
+}
+
+function getBookKey(item) {
+  // TODO: change to book ID
+  return item.title + item.subtitle
+}
 
 const styles = StyleSheet.create({
   cell: {
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-    backgroundColor: "red"
+    height:10
+  },
+  list: {
+    backgroundColor: "#EAF6FA",
+    paddingHorizontal: 20
   }
 });
 
