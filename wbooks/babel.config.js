@@ -10,9 +10,8 @@ module.exports = {
           '@assets': './src/assets',
           '@config': './src/config',
           '@constants': './src/constants',
-          '@propTypes': './src/propTypes',
+          '@interfaces': './src/interfaces',
           '@redux': './src/redux',
-          '@scss': './src/scss',
           '@services': './src/services',
           '@utils': './src/utils'
         }
