@@ -15,7 +15,7 @@ export default StyleSheet.create({
     width: 40
   },
   textContainer: {
-    marginHorizontal: 20
+    marginHorizontal: 22
   },
   title: {
     fontSize: 17,
