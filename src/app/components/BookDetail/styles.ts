@@ -1,14 +1,18 @@
 import { StyleSheet } from 'react-native';
 
+import IOSSHADOW from '@app/constants/commonStyles';
+import { TUNDORA, WHITE } from '@app/constants/colors';
+
 export default StyleSheet.create({
   container: {
     borderRadius: 5,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WHITE,
     marginHorizontal: 10,
     flexDirection: 'row',
     marginTop: 10,
     paddingVertical: 15,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    ...IOSSHADOW
   },
   image: {
     height: 60,
@@ -24,6 +28,6 @@ export default StyleSheet.create({
   subtitle: {
     fontSize: 15,
     fontWeight: '300',
-    color: '#4A4A4A'
+    color: TUNDORA
   }
 });

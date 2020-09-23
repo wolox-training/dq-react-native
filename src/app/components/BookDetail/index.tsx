@@ -3,15 +3,13 @@ import { Text, View, Image } from 'react-native';
 
 import styles from './styles';
 
-export default function BookDetail({
-  title,
-  subtitle,
-  url
-}: {
+interface Book {
   title: string;
   subtitle: string;
   url: string;
-}) {
+}
+
+function BookDetail({ title, subtitle, url }: Book) {
   return (
     <View style={styles.container}>
       <Image
@@ -29,3 +27,5 @@ export default function BookDetail({
     </View>
   );
 }
+
+export default BookDetail;

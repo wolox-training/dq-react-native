@@ -2,11 +2,12 @@ import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 
 import BookDetail from './components/BookDetail';
+import { WHITE } from './constants/colors';
 
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="#FFFFFF" />
+      <StatusBar barStyle="dark-content" backgroundColor={WHITE} />
       <SafeAreaView>
         <BookDetail
           title="A Little Bird Told Me"
