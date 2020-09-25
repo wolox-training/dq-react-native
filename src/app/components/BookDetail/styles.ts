@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import IOSSHADOW from '@app/constants/commonStyles';
-import { TUNDORA, WHITE } from '@app/constants/colors';
+import IOSSHADOW from '@constants/commonStyles';
+import { TUNDORA, WHITE } from '@constants/colors';
 
 export default StyleSheet.create({
   container: {
