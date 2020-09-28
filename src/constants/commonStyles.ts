@@ -1,6 +1,6 @@
 import { BLACK } from './colors';
 
-const SHADOW = {
+export const SHADOW = {
   shadowColor: BLACK,
   shadowOpacity: 0.15,
   shadowOffset: {
@@ -10,5 +10,3 @@ const SHADOW = {
   shadowRadius: 1,
   elevation: 1
 };
-
-export default SHADOW;

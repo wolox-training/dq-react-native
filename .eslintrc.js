@@ -10,6 +10,18 @@ module.exports = {
   },
   settings: {
     'import/ignore': ['node_modules'],
-    'import/resolver': 'babel-module'
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        settings: {
+          'import/resolver': {
+            node: {
+              paths: ['src'],
+              extensions: ['.ios.js', '.android.js', '.js', '.jsx', '.ts', '.tsx', '.json']
+            }
+          }
+        }
+      }
+    }
   }
 };
