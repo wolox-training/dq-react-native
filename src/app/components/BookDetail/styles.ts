@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-import IOSSHADOW from '@constants/commonStyles';
+import { SHADOW } from '@constants/commonStyles';
 import { TUNDORA, WHITE } from '@constants/colors';
 
 export default StyleSheet.create({
@@ -12,7 +11,7 @@ export default StyleSheet.create({
     marginTop: 10,
     paddingVertical: 15,
     paddingHorizontal: 20,
-    ...IOSSHADOW
+    ...SHADOW
   },
   image: {
     height: 60,

@@ -1,11 +1,10 @@
 import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
+import BookDetail from '@components/BookDetail';
+import { Book } from '@interfaces/book';
 
 import { DATA } from './constants';
 import styles from './styles';
-
-import BookDetail from '@components/BookDetail';
-import { Book } from '@interfaces/book';
 
 function HomeScreen() {
   const renderBook: ListRenderItem<Book> = ({ item }) => <BookDetail book={item} />;

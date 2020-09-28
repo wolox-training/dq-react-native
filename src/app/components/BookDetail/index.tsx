@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-
-import styles from './styles';
-
 import { Book } from '@interfaces/book';
 import placeholder from '@assets/img_book6.png';
+
+import styles from './styles';
 
 interface Props {
   book: Book;
