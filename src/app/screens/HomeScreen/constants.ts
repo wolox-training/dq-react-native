@@ -1,4 +1,4 @@
-import { Book } from 'src/Interfaces/Book';
+import { Book } from '@interfaces/book';
 
 export const DATA: Array<Book> = [
   {
