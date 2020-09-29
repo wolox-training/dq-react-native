@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { Book } from '@interfaces/book';
 import placeholder from '@assets/img_book6.png';
 
@@ -7,11 +7,12 @@ import styles from './styles';
 
 interface Props {
   book: Book;
+  onBookPress: () => void;
 }
 
-function BookDetail({ book }: Props) {
+function BookDetail({ book, onBookPress }: Props) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={onBookPress} style={styles.container}>
       <Image
         source={
           book.imageUrl
@@ -28,7 +29,7 @@ function BookDetail({ book }: Props) {
         </Text>
         <Text style={styles.subtitle}>{book.author}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
