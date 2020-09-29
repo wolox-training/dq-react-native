@@ -1,19 +1,18 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { Book } from '@interfaces/book';
 import placeholder from '@assets/img_book6.png';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import styles from './styles';
 
 interface Props {
   book: Book;
-  onPress: () => void;
+  onBookPress: () => void;
 }
 
-function BookDetail({ book, onPress }: Props) {
+function BookDetail({ book, onBookPress }: Props) {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.container}>
+    <TouchableOpacity onPress={onBookPress} style={styles.container}>
       <Image
         source={
           book.imageUrl
