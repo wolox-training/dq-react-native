@@ -10,7 +10,7 @@ interface Props {
   onBookPress: () => void;
 }
 
-function BookDetail({ book, onBookPress }: Props) {
+function BookCell({ book, onBookPress }: Props) {
   return (
     <TouchableOpacity onPress={onBookPress} style={styles.container}>
       <Image
@@ -33,4 +33,4 @@ function BookDetail({ book, onBookPress }: Props) {
   );
 }
 
-export default BookDetail;
+export default BookCell;
