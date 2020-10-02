@@ -8,8 +8,8 @@ import { DETAIL_SCREEN } from '@constants/routes';
 import { DATA } from './constants';
 import styles from './styles';
 
-function HomeScreen({ navigation }: Navigation) {
-  const onBookPress = () => navigation.navigate(DETAIL_SCREEN);
+function HomeScreen({ navigation }: Navigation<Book>) {
+  const onBookPress: (book: Book) => void = book => navigation.navigate(DETAIL_SCREEN, book);
   const renderBook: ListRenderItem<Book> = ({ item }) => <BookCell book={item} onBookPress={onBookPress} />;
   const keyExtractor = ({ id }: Book) => String(id);
   return (

@@ -7,12 +7,12 @@ import styles from './styles';
 
 interface Props {
   book: Book;
-  onBookPress: () => void;
+  onBookPress: (book: Book) => void;
 }
 
 function BookCell({ book, onBookPress }: Props) {
   return (
-    <TouchableOpacity onPress={onBookPress} style={styles.container}>
+    <TouchableOpacity onPress={() => onBookPress(book)} style={styles.container}>
       <Image
         source={
           book.imageUrl

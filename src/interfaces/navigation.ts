@@ -1,6 +1,6 @@
 import { RouteProp, NavigationProp, NavigationState } from '@react-navigation/native';
 
-export interface Navigation {
-  route: RouteProp<Record<string, object | undefined>, string>;
-  navigation: NavigationProp<Record<string, object | undefined>, string, NavigationState, {}, {}>;
+export interface Navigation<T extends Object | undefined> {
+  route: RouteProp<Record<string, T>, string>;
+  navigation: NavigationProp<Record<string, T>, string, NavigationState, {}, {}>;
 }
