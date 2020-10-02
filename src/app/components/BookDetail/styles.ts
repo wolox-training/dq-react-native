@@ -13,13 +13,12 @@ export default StyleSheet.create({
   infoContainer: {
     flexDirection: 'row',
     marginTop: 15,
-    marginHorizontal: 20,
-    marginBottom: 30
+    marginBottom: 30,
+    paddingLeft: 20
   },
   image: {
     height: 105,
-    width: 69,
-    marginRight: 20
+    width: 69
   },
   rentButton: {
     marginHorizontal: 30,
@@ -48,7 +47,10 @@ export default StyleSheet.create({
     color: CERULEAN,
     fontWeight: FONT_HEAVY
   },
-  textsContainer: {},
+  textsContainer: {
+    paddingHorizontal: 20,
+    marginRight: 70
+  },
   title: {
     fontSize: 24,
     fontWeight: FONT_BOLD
