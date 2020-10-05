@@ -10,21 +10,22 @@ interface Props {
 }
 
 function CommentCell({ comment }: Props) {
+  const { url, author, text } = comment;
   return (
     <View style={styles.container}>
       <Image
         source={
-          comment.url
+          url
             ? {
-                uri: comment.url
+                uri: url
               }
             : placeholder
         }
         style={styles.image}
       />
       <View style={styles.textsContianer}>
-        <Text style={styles.author}>{comment.author}</Text>
-        <Text style={styles.text}>{comment.text}</Text>
+        <Text style={styles.author}>{author}</Text>
+        <Text style={styles.text}>{text}</Text>
         <View style={styles.separator} />
       </View>
     </View>

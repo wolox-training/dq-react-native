@@ -1,7 +1,7 @@
+import { StyleSheet } from 'react-native';
 import { CERULEAN, WHITE } from '@constants/colors';
 import { SHADOW } from '@constants/commonStyles';
 import { FONT_LIGHT } from '@constants/fontWeights';
-import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   scrollView: {

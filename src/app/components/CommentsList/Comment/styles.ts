@@ -1,6 +1,7 @@
-import { FRENCH_GREY } from '@constants/colors';
-import { FONT_BOLD } from '@constants/fontWeights';
 import { StyleSheet } from 'react-native';
+import { FRENCH_GREY } from '@constants/colors';
+import { GREY_TEXT } from '@constants/commonStyles';
+import { FONT_BOLD } from '@constants/fontWeights';
 
 export default StyleSheet.create({
   container: {
@@ -21,11 +22,10 @@ export default StyleSheet.create({
     fontSize: 15,
     marginBottom: 5
   },
-  text: {},
+  text: GREY_TEXT,
   separator: {
     height: 1,
     backgroundColor: FRENCH_GREY,
-    marginTop: 15,
-    width: '100%'
+    marginTop: 15
   }
 });

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { FlatList, ListRenderItem, Text, View } from 'react-native';
+import { FlatList, ListRenderItem, Text, View, TouchableOpacity } from 'react-native';
 import { Book } from '@interfaces/book';
 import { Comment } from '@interfaces/comment';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import { DATA } from './constants';
 import styles from './styles';

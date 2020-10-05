@@ -1,13 +1,7 @@
-import { StyleSheet, TextStyle } from 'react-native';
-import { ALTO, CERULEAN, MONZA, TUNDORA, WHITE } from '@constants/colors';
-import { BUTTON, SHADOW } from '@constants/commonStyles';
-import { FONT_BOLD, FONT_HEAVY, FONT_LIGHT } from '@constants/fontWeights';
-
-const GREY_TEXT: TextStyle = {
-  fontSize: 15,
-  fontWeight: FONT_LIGHT,
-  color: TUNDORA
-};
+import { StyleSheet } from 'react-native';
+import { ALTO, CERULEAN, MONZA, WHITE } from '@constants/colors';
+import { BUTTON, GREY_TEXT, SHADOW } from '@constants/commonStyles';
+import { FONT_BOLD, FONT_HEAVY } from '@constants/fontWeights';
 
 export default StyleSheet.create({
   container: {

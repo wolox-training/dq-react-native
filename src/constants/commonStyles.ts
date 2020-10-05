@@ -1,6 +1,7 @@
-import { ViewStyle } from 'react-native';
+import { TextStyle, ViewStyle } from 'react-native';
 
-import { BLACK } from './colors';
+import { BLACK, TUNDORA } from './colors';
+import { FONT_LIGHT } from './fontWeights';
 
 export const SHADOW = {
   shadowColor: BLACK,
@@ -18,4 +19,10 @@ export const BUTTON: ViewStyle = {
   height: 44,
   borderRadius: 22,
   justifyContent: 'center'
+};
+
+export const GREY_TEXT: TextStyle = {
+  fontSize: 15,
+  fontWeight: FONT_LIGHT,
+  color: TUNDORA
 };
