@@ -43,7 +43,8 @@ export default StyleSheet.create({
   },
   textsContainer: {
     paddingHorizontal: 20,
-    marginRight: 70
+    marginRight: 20,
+    flex: 1
   },
   title: {
     fontSize: 24,

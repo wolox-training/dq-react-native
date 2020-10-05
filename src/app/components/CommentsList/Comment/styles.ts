@@ -15,7 +15,8 @@ export default StyleSheet.create({
   },
   textsContianer: {
     marginLeft: 20,
-    marginRight: 40
+    marginRight: 20,
+    flex: 1
   },
   author: {
     fontWeight: FONT_BOLD,
@@ -26,6 +27,7 @@ export default StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: FRENCH_GREY,
-    marginTop: 15
+    marginTop: 15,
+    flex: 1
   }
 });
