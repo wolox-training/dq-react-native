@@ -11,13 +11,15 @@ interface Props {
 }
 
 function BookCell({ book, onBookPress }: Props) {
+  const handlePress = () => onBookPress(book);
+  const { imageUrl, title, author } = book;
   return (
-    <TouchableOpacity onPress={() => onBookPress(book)} style={styles.container}>
+    <TouchableOpacity onPress={handlePress} style={styles.container}>
       <Image
         source={
-          book.imageUrl
+          imageUrl
             ? {
-                uri: book.imageUrl
+                uri: imageUrl
               }
             : placeholder
         }
@@ -25,9 +27,9 @@ function BookCell({ book, onBookPress }: Props) {
       />
       <View style={styles.textContainer}>
         <Text numberOfLines={2} style={styles.title}>
-          {book.title}
+          {title}
         </Text>
-        <Text style={styles.subtitle}>{book.author}</Text>
+        <Text style={styles.subtitle}>{author}</Text>
       </View>
     </TouchableOpacity>
   );

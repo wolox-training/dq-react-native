@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
-import BookCell from '@app/components/BookCell';
+import BookCell from '@components/BookCell';
 import { Book } from '@interfaces/book';
 import { Navigation } from '@interfaces/navigation';
 import { DETAIL_SCREEN } from '@constants/routes';

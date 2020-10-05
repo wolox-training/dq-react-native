@@ -1,3 +1,5 @@
+import { ViewStyle } from 'react-native';
+
 import { BLACK } from './colors';
 
 export const SHADOW = {
@@ -9,4 +11,11 @@ export const SHADOW = {
   },
   shadowRadius: 1,
   elevation: 1
+};
+
+export const BUTTON: ViewStyle = {
+  marginHorizontal: 30,
+  height: 44,
+  borderRadius: 22,
+  justifyContent: 'center'
 };
