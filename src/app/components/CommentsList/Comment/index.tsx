@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import placeholder from '@assets/img_book6.png';
+import placeholder from '@assets/img_user1.png';
 import { Comment } from '@interfaces/comment';
 
 import styles from './styles';

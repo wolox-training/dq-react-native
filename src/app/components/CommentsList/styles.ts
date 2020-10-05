@@ -1,5 +1,6 @@
-import { WHITE } from '@constants/colors';
+import { CERULEAN, WHITE } from '@constants/colors';
 import { SHADOW } from '@constants/commonStyles';
+import { FONT_LIGHT } from '@constants/fontWeights';
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -9,5 +10,12 @@ export default StyleSheet.create({
     marginHorizontal: 20,
     marginBottom: 44,
     ...SHADOW
+  },
+  viewAll: {
+    color: CERULEAN,
+    fontSize: 15,
+    fontWeight: FONT_LIGHT,
+    marginBottom: 15,
+    alignSelf: 'center'
   }
 });
