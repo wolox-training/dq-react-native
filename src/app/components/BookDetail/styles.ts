@@ -1,7 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle } from 'react-native';
 import { ALTO, CERULEAN, MONZA, TUNDORA, WHITE } from '@constants/colors';
-import { SHADOW } from '@constants/commonStyles';
+import { BUTTON, SHADOW } from '@constants/commonStyles';
 import { FONT_BOLD, FONT_HEAVY, FONT_LIGHT } from '@constants/fontWeights';
+
+const GREY_TEXT: TextStyle = {
+  fontSize: 15,
+  fontWeight: FONT_LIGHT,
+  color: TUNDORA
+};
 
 export default StyleSheet.create({
   container: {
@@ -21,12 +27,9 @@ export default StyleSheet.create({
     width: 69
   },
   rentButton: {
-    marginHorizontal: 30,
-    height: 44,
-    borderRadius: 22,
     backgroundColor: ALTO,
     marginBottom: 22,
-    justifyContent: 'center'
+    ...BUTTON
   },
   rentButtonText: {
     textAlign: 'center',
@@ -34,13 +37,10 @@ export default StyleSheet.create({
     color: WHITE
   },
   wishButton: {
-    marginHorizontal: 30,
-    height: 44,
-    borderRadius: 22,
     borderWidth: 1,
     borderColor: CERULEAN,
     marginBottom: 10,
-    justifyContent: 'center'
+    ...BUTTON
   },
   wishButtonText: {
     textAlign: 'center',
@@ -60,19 +60,7 @@ export default StyleSheet.create({
     fontWeight: FONT_BOLD,
     color: MONZA
   },
-  author: {
-    fontSize: 15,
-    fontWeight: FONT_LIGHT,
-    color: TUNDORA
-  },
-  year: {
-    fontSize: 15,
-    fontWeight: FONT_LIGHT,
-    color: TUNDORA
-  },
-  genre: {
-    fontSize: 15,
-    fontWeight: FONT_LIGHT,
-    color: TUNDORA
-  }
+  author: GREY_TEXT,
+  year: GREY_TEXT,
+  genre: GREY_TEXT
 });
