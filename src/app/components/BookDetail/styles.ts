@@ -9,6 +9,11 @@ const GREY_TEXT: TextStyle = {
   color: TUNDORA
 };
 
+const BUTTON_TEXT_FORMAT: TextStyle = {
+  textAlign: 'center',
+  fontWeight: FONT_HEAVY
+};
+
 export default StyleSheet.create({
   container: {
     backgroundColor: WHITE,
@@ -32,8 +37,7 @@ export default StyleSheet.create({
     ...BUTTON
   },
   rentButtonText: {
-    textAlign: 'center',
-    fontWeight: FONT_HEAVY,
+    ...BUTTON_TEXT_FORMAT,
     color: WHITE
   },
   wishButton: {
@@ -43,9 +47,8 @@ export default StyleSheet.create({
     ...BUTTON
   },
   wishButtonText: {
-    textAlign: 'center',
-    color: CERULEAN,
-    fontWeight: FONT_HEAVY
+    ...BUTTON_TEXT_FORMAT,
+    color: CERULEAN
   },
   textsContainer: {
     paddingHorizontal: 20,
