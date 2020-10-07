@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { FlatList, ListRenderItem, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { Book } from '@interfaces/book';
-import { Comment } from '@interfaces/comment';
 
 import { DATA } from './constants';
 import styles from './styles';
@@ -14,9 +13,6 @@ interface Props {
 // will need the book when I fetch the comments from the repository
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function CommentList({ book }: Props) {
-  const renderBook: ListRenderItem<Comment> = ({ item }) => <CommentCell comment={item} />;
-  const keyExtractor = ({ id }: Comment) => String(id);
-
   const data = {
     data: DATA.slice(0, 2),
     viewingAllComments: false
@@ -32,7 +28,9 @@ function CommentList({ book }: Props) {
 
   return (
     <View style={styles.scrollView}>
-      <FlatList<Comment> data={state.data} renderItem={renderBook} keyExtractor={keyExtractor} />
+      {state.data.map(item => (
+        <CommentCell comment={item} key={item.id} />
+      ))}
       {!state.viewingAllComments && (
         <TouchableOpacity onPress={onViewAllPressed}>
           <Text style={styles.viewAll}>View All</Text>
