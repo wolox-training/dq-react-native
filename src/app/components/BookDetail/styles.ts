@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextStyle } from 'react-native';
 import { ALTO, CERULEAN, MONZA, WHITE } from '@constants/colors';
 import { BUTTON, GREY_TEXT, SHADOW } from '@constants/commonStyles';
 import { FONT_BOLD, FONT_HEAVY } from '@constants/fontWeights';
