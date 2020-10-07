@@ -1,32 +1,69 @@
-import { StyleSheet } from 'react-native';
-import { SHADOW } from '@constants/commonStyles';
-import { TUNDORA, WHITE } from '@constants/colors';
+import { StyleSheet, TextStyle } from 'react-native';
+import { ALTO, CERULEAN, MONZA, TUNDORA, WHITE } from '@constants/colors';
+import { BUTTON, SHADOW } from '@constants/commonStyles';
+import { FONT_BOLD, FONT_HEAVY, FONT_LIGHT } from '@constants/fontWeights';
+
+const GREY_TEXT: TextStyle = {
+  fontSize: 15,
+  fontWeight: FONT_LIGHT,
+  color: TUNDORA
+};
+
+const BUTTON_TEXT_FORMAT: TextStyle = {
+  textAlign: 'center',
+  fontWeight: FONT_HEAVY
+};
 
 export default StyleSheet.create({
   container: {
-    borderRadius: 5,
     backgroundColor: WHITE,
-    marginHorizontal: 10,
-    flexDirection: 'row',
-    marginTop: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 20,
+    margin: 20,
+    borderRadius: 5,
     ...SHADOW
   },
-  image: {
-    height: 60,
-    width: 40
+  infoContainer: {
+    flexDirection: 'row',
+    marginTop: 15,
+    marginBottom: 30,
+    paddingLeft: 20
   },
-  textContainer: {
-    marginHorizontal: 20
+  image: {
+    height: 105,
+    width: 69
+  },
+  rentButton: {
+    backgroundColor: ALTO,
+    marginBottom: 22,
+    ...BUTTON
+  },
+  rentButtonText: {
+    ...BUTTON_TEXT_FORMAT,
+    color: WHITE
+  },
+  wishButton: {
+    borderWidth: 1,
+    borderColor: CERULEAN,
+    marginBottom: 10,
+    ...BUTTON
+  },
+  wishButtonText: {
+    ...BUTTON_TEXT_FORMAT,
+    color: CERULEAN
+  },
+  textsContainer: {
+    paddingHorizontal: 20,
+    marginRight: 70
   },
   title: {
-    fontSize: 17,
-    fontWeight: 'bold'
+    fontSize: 24,
+    fontWeight: FONT_BOLD
   },
-  subtitle: {
+  availability: {
     fontSize: 15,
-    fontWeight: '300',
-    color: TUNDORA
-  }
+    fontWeight: FONT_BOLD,
+    color: MONZA
+  },
+  author: GREY_TEXT,
+  year: GREY_TEXT,
+  genre: GREY_TEXT
 });
