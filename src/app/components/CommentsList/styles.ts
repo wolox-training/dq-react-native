@@ -4,7 +4,7 @@ import { SHADOW } from '@constants/commonStyles';
 import { FONT_LIGHT } from '@constants/fontWeights';
 
 export default StyleSheet.create({
-  scrollView: {
+  container: {
     borderRadius: 5,
     backgroundColor: WHITE,
     marginHorizontal: 20,

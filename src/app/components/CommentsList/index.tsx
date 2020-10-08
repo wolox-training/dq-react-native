@@ -10,28 +10,23 @@ interface Props {
   book: Book;
 }
 
-// will need the book when I fetch the comments from the repository
+// TODO: will need the book when I fetch the comments from the repository
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function CommentList({ book }: Props) {
-  const data = {
-    data: DATA.slice(0, 2),
-    viewingAllComments: false
-  };
-  const [state, setState] = useState(data);
+  const [commentList, setCommentList] = useState(DATA.slice(0, 2));
+  const [viewingAllComments, setViewingAllComments] = useState(false);
 
   const onViewAllPressed = () => {
-    setState({
-      data: DATA,
-      viewingAllComments: true
-    });
+    setCommentList(DATA);
+    setViewingAllComments(true);
   };
 
   return (
-    <View style={styles.scrollView}>
-      {state.data.map(item => (
+    <View style={styles.container}>
+      {commentList.map(item => (
         <CommentCell comment={item} key={item.id} />
       ))}
-      {!state.viewingAllComments && (
+      {!viewingAllComments && (
         <TouchableOpacity onPress={onViewAllPressed}>
           <Text style={styles.viewAll}>View All</Text>
         </TouchableOpacity>
