@@ -4,7 +4,7 @@ export const DATA: Array<Book> = [
   {
     id: 1,
     author: 'Emmie Thiel',
-    title: 'Ring of Bright Water',
+    title: 'Ring of Bright Water: The revenge of the dark fire ring',
     genre: 'Short story',
     publisher: 'Butterworth-Heinemann',
     year: '1968',

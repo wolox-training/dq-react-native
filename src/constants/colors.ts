@@ -5,3 +5,4 @@ export const POLAR = '#EAF6FA';
 export const MONZA = '#D0021B';
 export const CERULEAN = '#00ADEE';
 export const ALTO = '#DDDDDD';
+export const FRENCH_GREY = '#C8C7CC';

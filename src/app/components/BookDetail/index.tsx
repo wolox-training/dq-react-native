@@ -25,7 +25,9 @@ function BookDetail({ book }: Props) {
           style={styles.image}
         />
         <View style={styles.textsContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Text numberOfLines={2} style={styles.title}>
+            {title}
+          </Text>
           <Text style={styles.availability}>Unavailable</Text>
           <Text style={styles.author}>{author}</Text>
           <Text style={styles.year}>{year}</Text>
