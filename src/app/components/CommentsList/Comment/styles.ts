@@ -3,31 +3,29 @@ import { FRENCH_GREY } from '@constants/colors';
 import { GREY_TEXT } from '@constants/commonStyles';
 import { FONT_BOLD } from '@constants/fontWeights';
 
+const imageSize = 46;
+
 export default StyleSheet.create({
   container: {
     padding: 15,
     flexDirection: 'row'
   },
   image: {
-    height: 46,
-    width: 46,
-    borderRadius: 23
+    height: imageSize,
+    width: imageSize,
+    borderRadius: imageSize / 2
   },
   textsContianer: {
-    marginLeft: 20,
-    marginRight: 20,
-    flex: 1
+    marginHorizontal: 20,
+    flex: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: FRENCH_GREY,
+    paddingBottom: 15
   },
   author: {
     fontWeight: FONT_BOLD,
     fontSize: 15,
     marginBottom: 5
   },
-  text: GREY_TEXT,
-  separator: {
-    height: 1,
-    backgroundColor: FRENCH_GREY,
-    marginTop: 15,
-    flex: 1
-  }
+  text: GREY_TEXT
 });

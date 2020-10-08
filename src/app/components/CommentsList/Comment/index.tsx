@@ -26,7 +26,6 @@ function CommentCell({ comment }: Props) {
       <View style={styles.textsContianer}>
         <Text style={styles.author}>{author}</Text>
         <Text style={styles.text}>{text}</Text>
-        <View style={styles.separator} />
       </View>
     </View>
   );
