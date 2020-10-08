@@ -4,6 +4,7 @@ import BookCell from '@components/BookCell';
 import { Book } from '@interfaces/book';
 import { Navigation } from '@interfaces/navigation';
 import { DETAIL_SCREEN } from '@constants/routes';
+import { NAV_MARGIN } from '@constants/commonStyles';
 
 import { DATA } from './constants';
 import styles from './styles';
@@ -18,6 +19,7 @@ function HomeScreen({ navigation }: Navigation<Book>) {
       data={DATA}
       renderItem={renderBook}
       keyExtractor={keyExtractor}
+      contentContainerStyle={NAV_MARGIN}
     />
   );
 }
