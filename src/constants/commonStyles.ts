@@ -28,10 +28,10 @@ export const GREY_TEXT: TextStyle = {
   color: TUNDORA
 };
 
-export const NOTCHSIZE = DeviceInfo.hasNotch() ? 20 : 0;
+export const NOTCH_SIZE = DeviceInfo.hasNotch() ? 20 : 0;
 
 export const NAV_HEIGHT = {
-  height: 80 + NOTCHSIZE
+  height: 80 + NOTCH_SIZE
 };
 
-export const NAV_MARGIN = { paddingTop: 80 + NOTCHSIZE };
+export const NAV_MARGIN = { paddingTop: 80 + NOTCH_SIZE };

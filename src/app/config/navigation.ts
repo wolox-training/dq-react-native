@@ -1,6 +1,6 @@
 import { WHITE } from '@constants/colors';
-import NavBackground from '@app/components/NavBackground';
-import { NAV_HEIGHT, NOTCHSIZE } from '@constants/commonStyles';
+import NavBackground from '@components/NavBackground';
+import { NAV_HEIGHT, NOTCH_SIZE } from '@constants/commonStyles';
 
 export const stackNavigatorConfig = {
   headerTitleStyle: {
@@ -10,7 +10,7 @@ export const stackNavigatorConfig = {
     letterSpacing: -0.4
   },
   headerStyle: NAV_HEIGHT,
-  headerStatusBarHeight: 10 + NOTCHSIZE,
+  headerStatusBarHeight: 10 + NOTCH_SIZE,
   headerBackTitleVisible: false,
   headerBackground: NavBackground,
   headerTransparent: true,
