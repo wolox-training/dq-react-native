@@ -5,6 +5,7 @@ export default StyleSheet.create({
   image: {
     width: '100%',
     resizeMode: 'stretch',
-    backgroundColor: CLEAR
+    backgroundColor: CLEAR,
+    height: '100%'
   }
 });
