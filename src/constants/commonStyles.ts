@@ -1,4 +1,5 @@
 import { TextStyle, ViewStyle } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import { BLACK, TUNDORA } from './colors';
 import { FONT_LIGHT } from './fontWeights';
@@ -26,3 +27,11 @@ export const GREY_TEXT: TextStyle = {
   fontWeight: FONT_LIGHT,
   color: TUNDORA
 };
+
+export const NOTCH_SIZE = DeviceInfo.hasNotch() ? 20 : 0;
+
+export const NAV_HEIGHT = {
+  height: 80 + NOTCH_SIZE
+};
+
+export const NAV_MARGIN = { paddingTop: 80 + NOTCH_SIZE };
