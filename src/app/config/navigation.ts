@@ -1,12 +1,6 @@
 import { CERULEAN, WHITE } from '@constants/colors';
 import NavBackground from '@components/NavBackground';
 import { NAV_HEIGHT } from '@constants/commonStyles';
-import TabIcon from '@components/AppNavigator/TabIcon';
-import libraryImage from '@assets/ic_library.png';
-import wishlistImage from '@assets/ic_wishlist.png';
-import addNewImage from '@assets/ic_add_new.png';
-import rentalsImage from '@assets/ic_myrentals.png';
-import settingsImage from '@assets/ic_settings.png';
 
 export const stackNavigatorConfig = {
   headerTitleStyle: {
@@ -26,36 +20,14 @@ export const stackNavigatorConfig = {
   headerTintColor: WHITE
 };
 
-const libraryIcon = ({ focused }: { focused: boolean }) => TabIcon({ focused, source: libraryImage });
-export const libraryStackConfig = {
-  title: 'Library',
-  tabBarIcon: libraryIcon
-};
+export const libraryStackConfig = { title: 'Library' };
 
-const wishlistIcon = ({ focused }: { focused: boolean }) => TabIcon({ focused, source: wishlistImage });
-export const wishlistStackConfig = {
-  title: 'Wishlist',
-  tabBarIcon: wishlistIcon
-};
+export const wishlistStackConfig = { title: 'Wishlist' };
 
-const addNewIcon = ({ focused }: { focused: boolean }) => TabIcon({ focused, source: addNewImage });
-export const addNewStackConfig = {
-  title: 'Add New',
-  tabBarIcon: addNewIcon
-};
+export const addNewStackConfig = { title: 'Add New' };
 
-const rentalsIcon = ({ focused }: { focused: boolean }) => TabIcon({ focused, source: rentalsImage });
-export const rentalsStackConfig = {
-  title: 'Rentals',
-  tabBarIcon: rentalsIcon
-};
+export const rentalsStackConfig = { title: 'Rentals' };
 
-const settingsIcon = ({ focused }: { focused: boolean }) => TabIcon({ focused, source: settingsImage });
-export const settingsStackConfig = {
-  title: 'Settings',
-  tabBarIcon: settingsIcon
-};
+export const settingsStackConfig = { title: 'Settings' };
 
-export const tabBarOptions = {
-  activeTintColor: CERULEAN
-};
+export const tabBarOptions = { activeTintColor: CERULEAN };

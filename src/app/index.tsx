@@ -2,8 +2,7 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { STATUS_BAR_COLOR } from '@constants/colors';
-
-import AppNavigator from './components/AppNavigator';
+import AppNavigator from '@components/AppNavigator';
 
 const App = () => {
   return (
