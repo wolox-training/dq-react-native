@@ -10,7 +10,9 @@ interface Props {
 }
 function TabIcon({ focused }: Props) {
   const route = useRoute();
-  return <Image style={[styles.baseImage, !focused && styles.focusedImage]} source={NAV_ICONS[route.name]} />;
+  return (
+    <Image style={[styles.baseImage, !focused && styles.unFocusedImage]} source={NAV_ICONS[route.name]} />
+  );
 }
 
 export default TabIcon;

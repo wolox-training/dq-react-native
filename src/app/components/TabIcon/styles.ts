@@ -9,7 +9,7 @@ export default StyleSheet.create({
     height: iconSize,
     width: iconSize
   },
-  focusedImage: {
+  unFocusedImage: {
     tintColor: FRENCH_GREY
   }
 });
