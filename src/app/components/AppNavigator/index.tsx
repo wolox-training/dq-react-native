@@ -31,7 +31,6 @@ const AddNewStackNavigator = createStackNavigator();
 const RentalsStackNavigator = createStackNavigator();
 const SettingsStackNavigator = createStackNavigator();
 const TabNavigator = createBottomTabNavigator();
-const icon = ({ focused }: { focused: boolean }) => TabIcon({ focused });
 function LibraryStackScreen() {
   return (
     <LibraryStackNavigator.Navigator initialRouteName={HOME_SCREEN} screenOptions={stackNavigatorConfig}>
@@ -78,7 +77,7 @@ function SettingsStackScreen() {
 }
 function AppNavigator() {
   return (
-    <TabNavigator.Navigator tabBarOptions={tabBarOptions} screenOptions={{ tabBarIcon: icon }}>
+    <TabNavigator.Navigator tabBarOptions={tabBarOptions} screenOptions={{ tabBarIcon: TabIcon }}>
       <TabNavigator.Screen options={libraryStackConfig} name={LIBRARY_STACK} component={LibraryStackScreen} />
       <TabNavigator.Screen
         options={wishlistStackConfig}
