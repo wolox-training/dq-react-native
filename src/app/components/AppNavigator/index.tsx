@@ -19,7 +19,7 @@ import {
   stackNavigatorConfig,
   tabBarOptions,
   wishlistStackConfig
-} from '@app/config/navigation';
+} from '@config/navigation';
 import HomeScreen from '@screens/HomeScreen';
 import DetailScreen from '@screens/DetailScreen';
 import ComingSoonScreen from '@screens/ComingSoonScreen';
