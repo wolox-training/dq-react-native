@@ -1,4 +1,5 @@
 import 'react-native-gesture-handler';
+import './src/config/ReactotronConfig';
 import React from 'react';
 import { Provider } from 'react-redux';
 
