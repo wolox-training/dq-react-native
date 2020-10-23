@@ -7,3 +7,14 @@ export interface Book {
   year: string;
   imageUrl: string | null;
 }
+
+export interface BookState {
+  books: Book[];
+  booksLoading: boolean;
+  booksError: string | null;
+}
+
+export interface BookAction {
+  type: string;
+  payload: any;
+}
