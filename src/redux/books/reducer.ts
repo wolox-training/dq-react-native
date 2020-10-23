@@ -12,7 +12,7 @@ function booksReducer(state = initialState, action: BookAction): BookState {
     case bookActions.GET_BOOKS:
       return { ...state, booksLoading: true };
     case bookActions.GET_BOOKS_SUCCESS:
-      return { ...state, books: action.payload, booksLoading: false };
+      return { ...state, books: action.payload, booksLoading: false, booksError: null };
     case bookActions.GET_BOOKS_FAILURE:
       return { ...state, booksLoading: false, booksError: action.payload };
     default:
