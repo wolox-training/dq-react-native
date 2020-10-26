@@ -8,6 +8,8 @@ import { ImageSourcePropType } from 'react-native';
 export const HOME_SCREEN = 'Library';
 export const DETAIL_SCREEN = 'Details';
 export const COMING_SOON_SCREEN = 'ComingSoon';
+export const LOG_IN_SCREEN = 'Login';
+export const TAB_MENU = 'TabMenu';
 export const LIBRARY_STACK = 'LibraryStack';
 export const WISHLIST_STACK = 'WishlistStack';
 export const ADD_NEW_STACK = 'AddNewStack';
