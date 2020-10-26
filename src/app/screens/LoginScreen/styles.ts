@@ -19,7 +19,8 @@ export default StyleSheet.create({
     borderColor: TUNDORA,
     backgroundColor: WHITE,
     width: '90%',
-    marginVertical: 20
+    marginVertical: 20,
+    paddingHorizontal: 10
   },
   footer: {
     marginBottom: 20,
