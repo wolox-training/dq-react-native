@@ -8,3 +8,4 @@ export const ALTO = '#DDDDDD';
 export const FRENCH_GREY = '#C8C7CC';
 export const CLEAR = 'rgba(0,0,0,0)';
 export const STATUS_BAR_COLOR = 'rgb(0,173,238)';
+export const ERROR_RED = '#DD2C00';

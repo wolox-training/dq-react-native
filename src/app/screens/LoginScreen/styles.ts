@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { TUNDORA, WHITE } from '@constants/colors';
+import { ERROR_RED, TUNDORA, WHITE } from '@constants/colors';
 import { BUTTON } from '@constants/commonStyles';
 import { FONT_BOLD } from '@constants/fontWeights';
 
@@ -30,10 +30,14 @@ export default StyleSheet.create({
     ...BUTTON,
     borderColor: WHITE,
     borderWidth: 1,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    marginTop: 10
   },
   buttonText: {
     color: WHITE,
     fontWeight: FONT_BOLD
+  },
+  error: {
+    color: ERROR_RED
   }
 });
