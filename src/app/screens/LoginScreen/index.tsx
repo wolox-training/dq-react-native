@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Image, ImageBackground, Text, View } from 'react-native';
+import { Image, ImageBackground, KeyboardAvoidingView, Platform, Text } from 'react-native';
 import background from '@assets/bc_inicio.png';
 import logo from '@assets/Group.png';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
@@ -24,7 +24,7 @@ function LoginScreen() {
   };
   return (
     <ImageBackground style={styles.container} source={background}>
-      <View style={styles.body}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.body}>
         <Image source={logo} />
         <TextInput
           style={styles.input}
@@ -44,7 +44,7 @@ function LoginScreen() {
         <TouchableOpacity style={styles.button} onPress={onPress}>
           <Text style={styles.buttonText}>INGRESAR</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
       <Text style={styles.footer}>Designed, developed and used by woloxers</Text>
     </ImageBackground>
   );
