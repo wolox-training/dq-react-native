@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { ERROR_RED, TUNDORA, WHITE } from '@constants/colors';
+import { DISABLED_BUTTON_COLOR, ERROR_RED, TUNDORA, WHITE } from '@constants/colors';
 import { BUTTON } from '@constants/commonStyles';
 import { FONT_BOLD } from '@constants/fontWeights';
 
@@ -33,9 +33,15 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 10
   },
+  disabledButton: {
+    borderColor: DISABLED_BUTTON_COLOR
+  },
   buttonText: {
     color: WHITE,
     fontWeight: FONT_BOLD
+  },
+  disabledButtonText: {
+    color: DISABLED_BUTTON_COLOR
   },
   error: {
     color: ERROR_RED

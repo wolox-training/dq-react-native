@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Image, ImageBackground, KeyboardAvoidingView, Platform, Text } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TextInput,
+  TouchableOpacity
+} from 'react-native';
 import background from '@assets/bc_inicio.png';
 import logo from '@assets/Group.png';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import actionCreators from '@redux/auth/actions';
 import { isValidEmail, isValidPassword } from '@constants/utils';
 
@@ -14,13 +22,24 @@ function LoginScreen() {
   const [passwordValue, onChangePasswordText] = useState('');
   const [userError, onChangeUserError] = useState(false);
   const [passwordError, onChangePasswordError] = useState(false);
+  const [buttonEnabled, onButtonChanged] = useState(false);
   const dispatch = useDispatch();
-  const onPress = () => {
+  const handleUserEndEditing = () => {
     onChangeUserError(!isValidEmail(userValue));
+  };
+  const handlePasswordEndEditing = () => {
     onChangePasswordError(!isValidPassword(passwordValue));
-    if (isValidEmail(userValue) && isValidPassword(passwordValue)) {
-      dispatch(actionCreators.logIn());
-    }
+  };
+  const handleUserChange = (text: string) => {
+    onChangeUserText(text);
+    onButtonChanged(isValidEmail(userValue) && isValidPassword(passwordValue));
+  };
+  const handlePassChange = (text: string) => {
+    onChangePasswordText(text);
+    onButtonChanged(isValidEmail(userValue) && isValidPassword(passwordValue));
+  };
+  const onPress = () => {
+    dispatch(actionCreators.logIn());
   };
   return (
     <ImageBackground style={styles.container} source={background}>
@@ -28,21 +47,28 @@ function LoginScreen() {
         <Image source={logo} />
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangeUserText(text)}
+          onChangeText={handleUserChange}
+          onEndEditing={handleUserEndEditing}
+          onSubmitEditing={Keyboard.dismiss}
           value={userValue}
-          placeholder={'user'}
+          placeholder="user"
         />
         {userError && <Text style={styles.error}>Invalid Email</Text>}
         <TextInput
           style={styles.input}
-          onChangeText={text => onChangePasswordText(text)}
+          onChangeText={handlePassChange}
+          onEndEditing={handlePasswordEndEditing}
+          onSubmitEditing={Keyboard.dismiss}
           value={passwordValue}
-          placeholder={'password'}
-          secureTextEntry={true}
+          placeholder="password"
+          secureTextEntry
         />
         {passwordError && <Text style={styles.error}>Invalid Password</Text>}
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-          <Text style={styles.buttonText}>INGRESAR</Text>
+        <TouchableOpacity
+          disabled={!buttonEnabled}
+          style={[styles.button, !buttonEnabled && styles.disabledButton]}
+          onPress={onPress}>
+          <Text style={[styles.buttonText, !buttonEnabled && styles.disabledButtonText]}>LOG IN</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
       <Text style={styles.footer}>Designed, developed and used by woloxers</Text>
