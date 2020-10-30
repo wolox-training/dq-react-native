@@ -13,8 +13,3 @@ export interface BookState {
   booksLoading: boolean;
   booksError: string | null;
 }
-
-export interface BookAction {
-  type: string;
-  payload: any;
-}

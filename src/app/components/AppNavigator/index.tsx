@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
@@ -7,8 +8,10 @@ import {
   DETAIL_SCREEN,
   HOME_SCREEN,
   LIBRARY_STACK,
+  LOG_IN_SCREEN,
   RENTAL_STACK,
   SETTINGS_STACK,
+  TAB_MENU,
   WISHLIST_STACK
 } from '@constants/routes';
 import {
@@ -24,6 +27,8 @@ import HomeScreen from '@screens/HomeScreen';
 import DetailScreen from '@screens/DetailScreen';
 import ComingSoonScreen from '@screens/ComingSoonScreen';
 import TabIcon from '@components/TabIcon';
+import LoginScreen from '@screens/LoginScreen';
+import { AppState } from '@interfaces/redux';
 
 const LibraryStackNavigator = createStackNavigator();
 const WishlistStackNavigator = createStackNavigator();
@@ -31,6 +36,7 @@ const AddNewStackNavigator = createStackNavigator();
 const RentalsStackNavigator = createStackNavigator();
 const SettingsStackNavigator = createStackNavigator();
 const TabNavigator = createBottomTabNavigator();
+const LoginStackNavigator = createStackNavigator();
 function LibraryStackScreen() {
   return (
     <LibraryStackNavigator.Navigator initialRouteName={HOME_SCREEN} screenOptions={stackNavigatorConfig}>
@@ -75,7 +81,7 @@ function SettingsStackScreen() {
     </SettingsStackNavigator.Navigator>
   );
 }
-function AppNavigator() {
+function TabMenu() {
   return (
     <TabNavigator.Navigator tabBarOptions={tabBarOptions} screenOptions={{ tabBarIcon: TabIcon }}>
       <TabNavigator.Screen options={libraryStackConfig} name={LIBRARY_STACK} component={LibraryStackScreen} />
@@ -94,4 +100,22 @@ function AppNavigator() {
     </TabNavigator.Navigator>
   );
 }
+
+function AppNavigator() {
+  const token = useSelector((state: AppState) => state.auth.token);
+  return (
+    <LoginStackNavigator.Navigator>
+      {token ? (
+        <LoginStackNavigator.Screen options={{ headerShown: false }} name={TAB_MENU} component={TabMenu} />
+      ) : (
+        <LoginStackNavigator.Screen
+          options={{ headerShown: false }}
+          name={LOG_IN_SCREEN}
+          component={LoginScreen}
+        />
+      )}
+    </LoginStackNavigator.Navigator>
+  );
+}
+
 export default AppNavigator;
