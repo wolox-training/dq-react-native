@@ -6,6 +6,7 @@ export const storeToken = async (value: string) => {
   try {
     await AsyncStorage.setItem(tokenKey, value);
   } catch (e) {
+    // eslint-disable-next-line no-console
     console.log('error storing token');
   }
 };
