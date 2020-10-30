@@ -45,5 +45,8 @@ export default StyleSheet.create({
   },
   error: {
     color: ERROR_RED
+  },
+  padding: {
+    paddingTop: 20
   }
 });

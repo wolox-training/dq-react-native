@@ -13,7 +13,7 @@ function booksReducer(state = initialState, action: ReduxAction): AuthState {
     case loginActions.LOG_IN:
       return { ...state, loginLoading: true };
     case loginActions.LOG_IN_SUCCESS:
-      return { ...state, token: action.payload.token, loginLoading: false, loginError: null };
+      return { ...state, token: action.payload, loginLoading: false, loginError: null };
     case loginActions.LOG_IN_FAILURE:
       return { ...state, loginLoading: false, loginError: action.payload };
     default:
