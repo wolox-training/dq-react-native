@@ -1,3 +1,4 @@
+import { getToken } from '@constants/localStorage';
 import AuthService from '@services/AuthService';
 import { Dispatch } from 'redux';
 
@@ -15,6 +16,12 @@ export const actionCreators = {
       dispatch({ type: actions.LOG_IN_SUCCESS, payload: response.headers!['access-token'] });
     } else {
       dispatch({ type: actions.LOG_IN_FAILURE, payload: response.problem });
+    }
+  },
+  rememberUser: () => async (dispatch: Dispatch) => {
+    const token = await getToken();
+    if (token) {
+      dispatch({ type: actions.LOG_IN_SUCCESS, payload: token });
     }
   }
 };
