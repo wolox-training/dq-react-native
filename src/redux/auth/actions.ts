@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import AuthService from '@services/AuthService';
 
 export const actions = {
   LOG_IN: '@@AUTH/LOG_IN',
@@ -7,11 +8,11 @@ export const actions = {
 } as const;
 
 export const actionCreators = {
-  logIn: () => (dispatch: Dispatch) => {
+  logIn: (user: string, password: string) => async (dispatch: Dispatch) => {
     dispatch({ type: actions.LOG_IN });
-    const response = { ok: true, data: { token: 'Fake token' }, problem: null };
+    const response = await AuthService.login(user, password);
     if (response.ok) {
-      dispatch({ type: actions.LOG_IN_SUCCESS, payload: response.data });
+      dispatch({ type: actions.LOG_IN_SUCCESS, payload: response.headers!['access-token'] });
     } else {
       dispatch({ type: actions.LOG_IN_FAILURE, payload: response.problem });
     }

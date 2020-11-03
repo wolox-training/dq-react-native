@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Image,
   ImageBackground,
@@ -14,6 +14,7 @@ import background from '@assets/bc_inicio.png';
 import logo from '@assets/Group.png';
 import actionCreators from '@redux/auth/actions';
 import { isValidEmail, isValidPassword } from '@constants/utils';
+import { AppState } from '@interfaces/redux';
 
 import styles from './styles';
 
@@ -39,8 +40,9 @@ function LoginScreen() {
     onButtonChanged(isValidEmail(userValue) && isValidPassword(passwordValue));
   };
   const onPress = () => {
-    dispatch(actionCreators.logIn());
+    dispatch(actionCreators.logIn(userValue, passwordValue));
   };
+  const loginError = useSelector((state: AppState) => state.auth.loginError);
   return (
     <ImageBackground style={styles.container} source={background}>
       <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.body}>
@@ -70,6 +72,7 @@ function LoginScreen() {
           onPress={onPress}>
           <Text style={[styles.buttonText, !buttonEnabled && styles.disabledButtonText]}>LOG IN</Text>
         </TouchableOpacity>
+        {loginError && <Text style={[styles.error, styles.padding]}>Invalid credentials</Text>}
       </KeyboardAvoidingView>
       <Text style={styles.footer}>Designed, developed and used by woloxers</Text>
     </ImageBackground>
