@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { getToken } from '@services/localStorage';
+import { getToken, storeToken } from '@services/localStorage';
 import AuthService from '@services/AuthService';
 
 export const actions = {
@@ -14,7 +14,9 @@ export const actionCreators = {
     dispatch({ type: actions.LOG_IN });
     const response = await AuthService.login(user, password);
     if (response.ok) {
-      dispatch({ type: actions.LOG_IN_SUCCESS, payload: response.headers!['access-token'] });
+      const token = response.headers!['access-token'];
+      storeToken(token);
+      dispatch({ type: actions.LOG_IN_SUCCESS, payload: token });
     } else {
       dispatch({ type: actions.LOG_IN_FAILURE, payload: response.problem });
     }

@@ -1,4 +1,3 @@
-import { storeToken } from '@services/localStorage';
 import { AuthState } from '@interfaces/auth';
 import { ReduxAction } from '@interfaces/redux';
 
@@ -14,7 +13,6 @@ function booksReducer(state = initialState, action: ReduxAction): AuthState {
     case loginActions.LOG_IN:
       return { ...state, loginLoading: true };
     case loginActions.LOG_IN_SUCCESS:
-      storeToken(action.payload);
       return { ...state, token: action.payload, loginLoading: false, loginError: null };
     case loginActions.LOG_IN_FAILURE:
       return { ...state, loginLoading: false, loginError: action.payload };
