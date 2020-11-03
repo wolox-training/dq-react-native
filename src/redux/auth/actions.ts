@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { getHeaders, storeHeaders } from '@services/localStorage';
+import { getHeaders, storeHeaders } from '@services/LocalStorage';
 import AuthService from '@services/AuthService';
 import api from '@config/api';
 
