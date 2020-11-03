@@ -1,4 +1,4 @@
-import { storeToken } from '@constants/localStorage';
+import { storeToken } from '@services/localStorage';
 import { AuthState } from '@interfaces/auth';
 import { ReduxAction } from '@interfaces/redux';
 

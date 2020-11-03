@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { getToken } from '@constants/localStorage';
+import { getToken } from '@services/localStorage';
 import AuthService from '@services/AuthService';
 
 export const actions = {
