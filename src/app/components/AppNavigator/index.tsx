@@ -103,7 +103,7 @@ function TabMenu() {
 }
 
 function AppNavigator() {
-  const token = useSelector((state: AppState) => state.auth.token);
+  const token = useSelector((state: AppState) => state.auth.headers);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actionCreators.rememberUser());

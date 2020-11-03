@@ -1,6 +1,7 @@
 import { Dispatch } from 'redux';
-import { getToken, storeToken } from '@services/localStorage';
+import { getHeaders, storeHeaders } from '@services/localStorage';
 import AuthService from '@services/AuthService';
+import api from '@config/api';
 
 export const actions = {
   LOG_IN: '@@AUTH/LOG_IN',
@@ -14,17 +15,19 @@ export const actionCreators = {
     dispatch({ type: actions.LOG_IN });
     const response = await AuthService.login(user, password);
     if (response.ok) {
-      const token = response.headers!['access-token'];
-      storeToken(token);
-      dispatch({ type: actions.LOG_IN_SUCCESS, payload: token });
+      const { 'access-token': accessToken, client, uid } = response.headers!;
+      const headersObj = { 'access-token': accessToken, client, uid };
+      api.setHeaders(headersObj);
+      storeHeaders(headersObj);
+      dispatch({ type: actions.LOG_IN_SUCCESS, payload: headersObj });
     } else {
       dispatch({ type: actions.LOG_IN_FAILURE, payload: response.problem });
     }
   },
   rememberUser: () => async (dispatch: Dispatch) => {
-    const token = await getToken();
-    if (token) {
-      dispatch({ type: actions.SESSION_RECOVERED, payload: token });
+    const headers = await getHeaders();
+    if (headers) {
+      dispatch({ type: actions.SESSION_RECOVERED, payload: headers });
     }
   }
 };
