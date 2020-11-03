@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
@@ -29,6 +29,7 @@ import ComingSoonScreen from '@screens/ComingSoonScreen';
 import TabIcon from '@components/TabIcon';
 import LoginScreen from '@screens/LoginScreen';
 import { AppState } from '@interfaces/redux';
+import actionCreators from '@redux/auth/actions';
 
 const LibraryStackNavigator = createStackNavigator();
 const WishlistStackNavigator = createStackNavigator();
@@ -103,6 +104,10 @@ function TabMenu() {
 
 function AppNavigator() {
   const token = useSelector((state: AppState) => state.auth.token);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actionCreators.rememberUser());
+  }, [dispatch]);
   return (
     <LoginStackNavigator.Navigator>
       {token ? (

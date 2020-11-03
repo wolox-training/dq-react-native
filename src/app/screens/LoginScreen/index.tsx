@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Image,
@@ -25,9 +25,6 @@ function LoginScreen() {
   const [passwordError, onChangePasswordError] = useState(false);
   const [buttonEnabled, onButtonChanged] = useState(false);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(actionCreators.rememberUser());
-  }, [dispatch]);
   const handleUserEndEditing = () => {
     onChangeUserError(!isValidEmail(userValue));
   };
