@@ -1,6 +1,6 @@
+import { Dispatch } from 'redux';
 import { getToken } from '@constants/localStorage';
 import AuthService from '@services/AuthService';
-import { Dispatch } from 'redux';
 
 export const actions = {
   LOG_IN: '@@AUTH/LOG_IN',
