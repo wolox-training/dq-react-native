@@ -1,5 +1,5 @@
-import AuthService from '@services/AuthService';
 import { Dispatch } from 'redux';
+import AuthService from '@services/AuthService';
 
 export const actions = {
   LOG_IN: '@@AUTH/LOG_IN',
