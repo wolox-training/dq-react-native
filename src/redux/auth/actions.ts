@@ -7,7 +7,9 @@ export const actions = {
   LOG_IN: '@@AUTH/LOG_IN',
   LOG_IN_SUCCESS: '@@AUTH/LOG_IN_SUCCESS',
   LOG_IN_FAILURE: '@@AUTH/LOG_IN_FAILURE',
-  SESSION_RECOVERED: '@@AUTH/SESSION_RECOVERED'
+  SESSION_RECOVERED: '@@AUTH/SESSION_RECOVERED',
+  SESSION_LOADING: '@@AUTH/SESSION_LOADING',
+  SESSION_NOT_RECOVERED: '@@AUTH/SESSION_NOT_RECOVERED'
 } as const;
 
 export const actionCreators = {
@@ -25,9 +27,12 @@ export const actionCreators = {
     }
   },
   rememberUser: () => async (dispatch: Dispatch) => {
+    dispatch({ type: actions.SESSION_LOADING });
     const headers = await getHeaders();
     if (headers) {
       dispatch({ type: actions.SESSION_RECOVERED, payload: headers });
+    } else {
+      dispatch({ type: actions.SESSION_NOT_RECOVERED });
     }
   }
 };
