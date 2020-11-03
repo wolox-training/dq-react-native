@@ -1,10 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const tokenKey = 'WBOOKS_TOKEN';
+const AUTH_TOKEN = '@WBOOKS:AUTH_TOKEN';
 
 export const storeToken = async (value: string) => {
   try {
-    await AsyncStorage.setItem(tokenKey, value);
+    await AsyncStorage.setItem(AUTH_TOKEN, value);
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log('error storing token');
@@ -13,7 +13,7 @@ export const storeToken = async (value: string) => {
 
 export const getToken = async () => {
   try {
-    const value = await AsyncStorage.getItem(tokenKey);
+    const value = await AsyncStorage.getItem(AUTH_TOKEN);
     return value;
   } catch (e) {
     return null;
