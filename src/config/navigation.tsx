@@ -1,6 +1,8 @@
+import React from 'react';
 import { CERULEAN, WHITE } from '@constants/colors';
 import NavBackground from '@components/NavBackground';
 import { NAV_HEIGHT } from '@constants/commonStyles';
+import LogOutIcon from '@components/HeaderIcon';
 
 export const stackNavigatorConfig = {
   headerTitleStyle: {
@@ -13,6 +15,7 @@ export const stackNavigatorConfig = {
   headerLeftContainerStyle: {
     marginBottom: 20
   },
+  headerRight: () => <LogOutIcon />,
   headerStyle: NAV_HEIGHT,
   headerBackTitleVisible: false,
   headerBackground: NavBackground,
