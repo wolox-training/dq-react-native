@@ -4,18 +4,21 @@ import { ReduxAction } from '@interfaces/redux';
 import { actions as loginActions } from './actions';
 
 const initialState: AuthState = {
-  token: null,
+  headers: null,
   loginLoading: false,
-  loginError: null
+  loginError: null,
+  sessionLoading: true
 };
 function booksReducer(state = initialState, action: ReduxAction): AuthState {
   switch (action.type) {
     case loginActions.LOG_IN:
       return { ...state, loginLoading: true };
     case loginActions.LOG_IN_SUCCESS:
-      return { ...state, token: action.payload, loginLoading: false, loginError: null };
+      return { ...state, headers: action.payload, loginLoading: false, loginError: null };
     case loginActions.LOG_IN_FAILURE:
       return { ...state, loginLoading: false, loginError: action.payload };
+    case loginActions.SESSION_RECOVER:
+      return { ...state, headers: action.payload, sessionLoading: false };
     default:
       return state;
   }

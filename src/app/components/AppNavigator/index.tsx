@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
@@ -8,6 +8,7 @@ import {
   DETAIL_SCREEN,
   HOME_SCREEN,
   LIBRARY_STACK,
+  LOADING_SCREEN,
   LOG_IN_SCREEN,
   RENTAL_STACK,
   SETTINGS_STACK,
@@ -29,6 +30,7 @@ import ComingSoonScreen from '@screens/ComingSoonScreen';
 import TabIcon from '@components/TabIcon';
 import LoginScreen from '@screens/LoginScreen';
 import { AppState } from '@interfaces/redux';
+import actionCreators from '@redux/auth/actions';
 
 const LibraryStackNavigator = createStackNavigator();
 const WishlistStackNavigator = createStackNavigator();
@@ -37,6 +39,7 @@ const RentalsStackNavigator = createStackNavigator();
 const SettingsStackNavigator = createStackNavigator();
 const TabNavigator = createBottomTabNavigator();
 const LoginStackNavigator = createStackNavigator();
+const comingSoonInitialParams = { text: 'Coming Soon' };
 function LibraryStackScreen() {
   return (
     <LibraryStackNavigator.Navigator initialRouteName={HOME_SCREEN} screenOptions={stackNavigatorConfig}>
@@ -50,7 +53,11 @@ function WishlistStackScreen() {
     <WishlistStackNavigator.Navigator
       initialRouteName={COMING_SOON_SCREEN}
       screenOptions={stackNavigatorConfig}>
-      <WishlistStackNavigator.Screen name={COMING_SOON_SCREEN} component={ComingSoonScreen} />
+      <WishlistStackNavigator.Screen
+        name={COMING_SOON_SCREEN}
+        component={ComingSoonScreen}
+        initialParams={comingSoonInitialParams}
+      />
     </WishlistStackNavigator.Navigator>
   );
 }
@@ -59,7 +66,11 @@ function AddNewStackScreen() {
     <AddNewStackNavigator.Navigator
       initialRouteName={COMING_SOON_SCREEN}
       screenOptions={stackNavigatorConfig}>
-      <AddNewStackNavigator.Screen name={COMING_SOON_SCREEN} component={ComingSoonScreen} />
+      <AddNewStackNavigator.Screen
+        name={COMING_SOON_SCREEN}
+        component={ComingSoonScreen}
+        initialParams={comingSoonInitialParams}
+      />
     </AddNewStackNavigator.Navigator>
   );
 }
@@ -68,7 +79,11 @@ function RentalStackScreen() {
     <RentalsStackNavigator.Navigator
       initialRouteName={COMING_SOON_SCREEN}
       screenOptions={stackNavigatorConfig}>
-      <RentalsStackNavigator.Screen name={COMING_SOON_SCREEN} component={ComingSoonScreen} />
+      <RentalsStackNavigator.Screen
+        name={COMING_SOON_SCREEN}
+        component={ComingSoonScreen}
+        initialParams={comingSoonInitialParams}
+      />
     </RentalsStackNavigator.Navigator>
   );
 }
@@ -77,7 +92,11 @@ function SettingsStackScreen() {
     <SettingsStackNavigator.Navigator
       initialRouteName={COMING_SOON_SCREEN}
       screenOptions={stackNavigatorConfig}>
-      <SettingsStackNavigator.Screen name={COMING_SOON_SCREEN} component={ComingSoonScreen} />
+      <SettingsStackNavigator.Screen
+        name={COMING_SOON_SCREEN}
+        component={ComingSoonScreen}
+        initialParams={comingSoonInitialParams}
+      />
     </SettingsStackNavigator.Navigator>
   );
 }
@@ -102,10 +121,22 @@ function TabMenu() {
 }
 
 function AppNavigator() {
-  const token = useSelector((state: AppState) => state.auth.token);
+  const sessionLoading = useSelector((state: AppState) => state.auth.sessionLoading);
+  const token = useSelector((state: AppState) => state.auth.headers);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actionCreators.rememberUser());
+  }, [dispatch]);
   return (
     <LoginStackNavigator.Navigator>
-      {token ? (
+      {sessionLoading ? (
+        <LoginStackNavigator.Screen
+          options={{ headerShown: false }}
+          name={LOADING_SCREEN}
+          component={ComingSoonScreen}
+          initialParams={{ text: 'Loading...' }}
+        />
+      ) : token ? (
         <LoginStackNavigator.Screen options={{ headerShown: false }} name={TAB_MENU} component={TabMenu} />
       ) : (
         <LoginStackNavigator.Screen
