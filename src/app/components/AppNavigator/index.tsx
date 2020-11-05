@@ -27,8 +27,8 @@ import {
 import HomeScreen from '@screens/HomeScreen';
 import DetailScreen from '@screens/DetailScreen';
 import ComingSoonScreen from '@screens/ComingSoonScreen';
-import TabIcon from '@components/TabIcon';
 import LoginScreen from '@screens/LoginScreen';
+import TabIcon from '@components/TabIcon';
 import { AppState } from '@interfaces/redux';
 import actionCreators from '@redux/auth/actions';
 
