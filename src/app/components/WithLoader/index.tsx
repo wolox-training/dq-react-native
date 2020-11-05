@@ -1,16 +1,21 @@
 import React from 'react';
-import { CERULEAN } from '@constants/colors';
 import { ActivityIndicator, View } from 'react-native';
+import { CERULEAN } from '@constants/colors';
 
 import styles from './styles';
 
-function WithLoader({ loading, children }: { loading: boolean; children: JSX.Element }) {
-  return loading ? (
+interface Props {
+  loading: boolean;
+  children: JSX.Element;
+}
+
+function WithLoader(props: Props) {
+  return props.loading ? (
     <View style={styles.loader}>
       <ActivityIndicator size="large" color={CERULEAN} />
     </View>
   ) : (
-    children
+    props.children
   );
 }
 
