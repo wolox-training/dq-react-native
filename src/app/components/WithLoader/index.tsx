@@ -4,13 +4,13 @@ import { ActivityIndicator, View } from 'react-native';
 
 import styles from './styles';
 
-function WithLoader(Component: (props: any) => JSX.Element, loading: boolean, props: any) {
+function WithLoader({ loading, children }: { loading: boolean; children: JSX.Element }) {
   return loading ? (
     <View style={styles.loader}>
       <ActivityIndicator size="large" color={CERULEAN} />
     </View>
   ) : (
-    <Component {...props} />
+    children
   );
 }
 

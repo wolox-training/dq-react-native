@@ -29,7 +29,6 @@ import DetailScreen from '@screens/DetailScreen';
 import ComingSoonScreen from '@screens/ComingSoonScreen';
 import LoginScreen from '@screens/LoginScreen';
 import TabIcon from '@components/TabIcon';
-import WithLoader from '@components/WithLoader';
 import { AppState } from '@interfaces/redux';
 import actionCreators from '@redux/auth/actions';
 
@@ -124,7 +123,6 @@ function TabMenu() {
 function AppNavigator() {
   const sessionLoading = useSelector((state: AppState) => state.auth.sessionLoading);
   const token = useSelector((state: AppState) => state.auth.headers);
-  const loginLoading = useSelector((state: AppState) => state.auth.loginLoading);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actionCreators.rememberUser());
@@ -144,7 +142,7 @@ function AppNavigator() {
         <LoginStackNavigator.Screen
           options={{ headerShown: false }}
           name={LOG_IN_SCREEN}
-          component={() => WithLoader(LoginScreen, loginLoading, null)}
+          component={LoginScreen}
         />
       )}
     </LoginStackNavigator.Navigator>
