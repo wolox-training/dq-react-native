@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { DATA } from '@app/screens/HomeScreen/constants';
+import BookService from '@services/BookService';
 
 export const actions = {
   GET_BOOKS: '@@BOOKS/GET_BOOKS',
@@ -8,9 +8,9 @@ export const actions = {
 } as const;
 
 export const actionCreators = {
-  getBooks: () => (dispatch: Dispatch) => {
+  getBooks: () => async (dispatch: Dispatch) => {
     dispatch({ type: actions.GET_BOOKS });
-    const response = { ok: true, data: DATA, problem: null };
+    const response = await BookService.getBooks();
     if (response.ok) {
       dispatch({ type: actions.GET_BOOKS_SUCCESS, payload: response.data });
     } else {

@@ -5,7 +5,11 @@ export interface Book {
   genre: string;
   publisher: string;
   year: string;
-  imageUrl: string | null;
+  image: Image;
+}
+
+interface Image {
+  url: string | null;
 }
 
 export interface BookState {
