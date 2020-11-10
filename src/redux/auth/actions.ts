@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { getHeaders, storeHeaders } from '@services/LocalStorage';
+import { getHeaders, removeHeaders, storeHeaders } from '@services/LocalStorage';
 import AuthService from '@services/AuthService';
 import api from '@config/api';
 
@@ -7,7 +7,8 @@ export const actions = {
   LOG_IN: '@@AUTH/LOG_IN',
   LOG_IN_SUCCESS: '@@AUTH/LOG_IN_SUCCESS',
   LOG_IN_FAILURE: '@@AUTH/LOG_IN_FAILURE',
-  SESSION_RECOVER: '@@AUTH/SESSION_RECOVER'
+  SESSION_RECOVER: '@@AUTH/SESSION_RECOVER',
+  LOG_OUT: '@@AUTH/LOG_OUT'
 } as const;
 
 export const actionCreators = {
@@ -28,6 +29,11 @@ export const actionCreators = {
     const headers = await getHeaders();
     if (headers) api.setHeaders(headers);
     dispatch({ type: actions.SESSION_RECOVER, payload: headers });
+  },
+  logOut: () => (dispatch: Dispatch) => {
+    removeHeaders();
+    ['access-token', 'client', 'uid'].forEach(header => api.deleteHeader(header));
+    dispatch({ type: actions.LOG_OUT });
   }
 };
 

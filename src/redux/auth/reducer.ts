@@ -19,6 +19,8 @@ function booksReducer(state = initialState, action: ReduxAction): AuthState {
       return { ...state, loginLoading: false, loginError: action.payload };
     case loginActions.SESSION_RECOVER:
       return { ...state, headers: action.payload, sessionLoading: false };
+    case loginActions.LOG_OUT:
+      return { ...state, headers: null };
     default:
       return state;
   }

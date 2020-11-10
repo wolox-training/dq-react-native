@@ -20,3 +20,12 @@ export const getHeaders = async () => {
     return null;
   }
 };
+
+export const removeHeaders = async () => {
+  try {
+    await AsyncStorage.removeItem(AUTH_TOKEN);
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.log('error logging out');
+  }
+};
