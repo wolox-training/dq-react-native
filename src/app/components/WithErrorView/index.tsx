@@ -1,13 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
+import GenericText from '@app/screens/ComingSoonScreen/GenericText';
 
 interface Props {
-  error: boolean;
+  error: string | null;
   children: JSX.Element;
 }
 
-function WithLoader(props: Props) {
-  return props.error ? <Text>Error</Text> : props.children;
+function WithErrorView(props: Props) {
+  return props.error ? <GenericText text="Error" /> : props.children;
 }
 
-export default WithLoader;
+export default WithErrorView;

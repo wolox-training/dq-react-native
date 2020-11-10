@@ -9,6 +9,7 @@ import { NAV_MARGIN } from '@constants/commonStyles';
 import { AppState } from '@interfaces/redux';
 import actionCreators from '@redux/books/actions';
 import WithLoader from '@components/WithLoader';
+import WithErrorView from '@components/WithErrorView';
 
 import styles from './styles';
 
@@ -19,18 +20,21 @@ function HomeScreen({ navigation }: Navigation<any>) {
   }, [dispatch]);
   const books = useSelector((state: AppState) => state.book.books);
   const loading = useSelector((state: AppState) => state.book.booksLoading);
+  const error = useSelector((state: AppState) => state.book.booksError);
   const onBookPress: (book: Book) => void = book => navigation.navigate(DETAIL_SCREEN, book);
   const renderBook: ListRenderItem<Book> = ({ item }) => <BookCell book={item} onBookPress={onBookPress} />;
   const keyExtractor = ({ id }: Book) => String(id);
   return (
     <WithLoader loading={loading}>
-      <FlatList<Book>
-        style={styles.scrollView}
-        data={books}
-        renderItem={renderBook}
-        keyExtractor={keyExtractor}
-        contentContainerStyle={NAV_MARGIN}
-      />
+      <WithErrorView error={error}>
+        <FlatList<Book>
+          style={styles.scrollView}
+          data={books}
+          renderItem={renderBook}
+          keyExtractor={keyExtractor}
+          contentContainerStyle={NAV_MARGIN}
+        />
+      </WithErrorView>
     </WithLoader>
   );
 }

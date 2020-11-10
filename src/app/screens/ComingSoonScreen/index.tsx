@@ -1,19 +1,14 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import { Navigation } from '@interfaces/navigation';
 
-import styles from './styles';
+import GenericText from './GenericText';
 
 interface LabelText {
   text: string;
 }
 
 function ComingSoonScreen({ route }: Navigation<LabelText>) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{route.params.text}</Text>
-    </View>
-  );
+  return <GenericText text={route.params.text} />;
 }
 
 export default ComingSoonScreen;
