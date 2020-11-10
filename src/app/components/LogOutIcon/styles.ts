@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
-const iconSize = 25;
+const ICON_SIZE = 25;
 export default StyleSheet.create({
   image: {
-    height: iconSize,
-    width: iconSize,
+    height: ICON_SIZE,
+    width: ICON_SIZE,
     marginBottom: 10,
     marginRight: 10
   }

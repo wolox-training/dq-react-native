@@ -2,7 +2,7 @@ import React from 'react';
 import { CERULEAN, WHITE } from '@constants/colors';
 import NavBackground from '@components/NavBackground';
 import { NAV_HEIGHT } from '@constants/commonStyles';
-import LogOutIcon from '@components/HeaderIcon';
+import LogOutIcon from '@app/components/LogOutIcon';
 
 export const stackNavigatorConfig = {
   headerTitleStyle: {
