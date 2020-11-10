@@ -1,5 +1,5 @@
 import React from 'react';
-import GenericText from '@screens/ComingSoonScreen/GenericText';
+import GenericText from '@components/GenericText';
 
 interface Props {
   error: string | null;

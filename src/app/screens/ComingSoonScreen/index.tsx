@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navigation } from '@interfaces/navigation';
-
-import GenericText from './GenericText';
+import GenericText from '@components/GenericText';
 
 interface LabelText {
   text: string;
