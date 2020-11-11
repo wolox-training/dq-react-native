@@ -10,15 +10,15 @@ interface Props {
 }
 
 function BookDetail({ book }: Props) {
-  const { imageUrl, author, title, year, genre } = book;
+  const { image, author, title, year, genre } = book;
   return (
     <View style={styles.container}>
       <View style={styles.infoContainer}>
         <Image
           source={
-            imageUrl
+            image.url
               ? {
-                  uri: imageUrl
+                  uri: image.url
                 }
               : placeholder
           }
