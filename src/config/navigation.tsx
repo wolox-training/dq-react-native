@@ -2,7 +2,10 @@ import React from 'react';
 import { CERULEAN, WHITE } from '@constants/colors';
 import NavBackground from '@components/NavBackground';
 import { NAV_HEIGHT } from '@constants/commonStyles';
-import LogOutIcon from '@app/components/LogOutIcon';
+import LogOutIcon from '@components/LogOutIcon';
+import SearchIcon from '@components/SearchIcon';
+import { TransitionPresets } from '@react-navigation/stack';
+import SearchBar from '@app/components/SearchBar';
 
 export const stackNavigatorConfig = {
   headerTitleStyle: {
@@ -15,12 +18,24 @@ export const stackNavigatorConfig = {
   headerLeftContainerStyle: {
     marginBottom: 20
   },
-  headerRight: () => <LogOutIcon />,
   headerStyle: NAV_HEIGHT,
   headerBackTitleVisible: false,
   headerBackground: NavBackground,
   headerTransparent: true,
   headerTintColor: WHITE
+};
+
+export const homeConfig = {
+  headerLeft: () => <LogOutIcon />,
+  headerRight: () => <SearchIcon />
+};
+
+export const searchConfig = {
+  ...TransitionPresets.ModalTransition,
+  headerTitle: () => <SearchBar />,
+  headerTitleContainerStyle: {
+    flex: 1
+  }
 };
 
 export const libraryStackConfig = { title: 'Library' };

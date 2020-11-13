@@ -16,6 +16,7 @@ export const WISHLIST_STACK = 'WishlistStack';
 export const ADD_NEW_STACK = 'AddNewStack';
 export const RENTAL_STACK = 'RentalStack';
 export const SETTINGS_STACK = 'SettingsStack';
+export const SEARCH_SCREEN = 'SearchScreen';
 export const NAV_ICONS: { [name: string]: ImageSourcePropType } = {
   [LIBRARY_STACK]: libraryImage,
   [WISHLIST_STACK]: wishlistImage,
