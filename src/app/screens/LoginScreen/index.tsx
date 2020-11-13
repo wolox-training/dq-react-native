@@ -43,8 +43,8 @@ function LoginScreen() {
   const onPress = () => {
     dispatch(actionCreators.logIn(userValue, passwordValue));
   };
-  const loginLoading = useSelector((state: AppState) => state.auth.loginLoading);
-  const loginError = useSelector((state: AppState) => state.auth.loginError);
+  const loginLoading = useSelector((state: AppState) => state.auth.headersLoading);
+  const loginError = useSelector((state: AppState) => state.auth.headersError);
   return (
     <WithLoader loading={loginLoading}>
       <ImageBackground style={styles.container} source={background}>
