@@ -17,7 +17,8 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   input: {
-    flex: 1
+    flex: 1,
+    paddingVertical: 0
   },
   searchIcon: {
     height: SEARCH_ICON_SIZE,
