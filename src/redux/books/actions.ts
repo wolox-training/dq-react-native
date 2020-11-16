@@ -1,22 +1,14 @@
-import { Dispatch } from 'redux';
+import { createTypes, completeTypes } from 'redux-recompose';
 import BookService from '@services/BookService';
 
-export const actions = {
-  GET_BOOKS: '@@BOOKS/GET_BOOKS',
-  GET_BOOKS_SUCCESS: '@@BOOKS/GET_BOOKS_SUCCESS',
-  GET_BOOKS_FAILURE: '@@BOOKS/GET_BOOKS_FAILURE'
-} as const;
+export const actions = createTypes(completeTypes(['GET_BOOKS']), '@@BOOKS');
 
 export const actionCreators = {
-  getBooks: () => async (dispatch: Dispatch) => {
-    dispatch({ type: actions.GET_BOOKS });
-    const response = await BookService.getBooks();
-    if (response.ok) {
-      dispatch({ type: actions.GET_BOOKS_SUCCESS, payload: response.data });
-    } else {
-      dispatch({ type: actions.GET_BOOKS_FAILURE, payload: response.problem });
-    }
-  }
+  getBooks: () => ({
+    type: actions.GET_BOOKS,
+    target: 'books',
+    service: BookService.getBooks
+  })
 };
 
 export default actionCreators;

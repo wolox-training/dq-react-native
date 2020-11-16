@@ -9,4 +9,5 @@ export interface AppState {
 export interface ReduxAction {
   type: string;
   payload: any;
+  target: string;
 }

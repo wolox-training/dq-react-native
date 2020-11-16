@@ -1,28 +1,30 @@
 import { AuthState } from '@interfaces/auth';
+import { onSetValue, createReducer, completeState, completeReducer } from 'redux-recompose';
 import { ReduxAction } from '@interfaces/redux';
 
 import { actions as loginActions } from './actions';
 
-const initialState: AuthState = {
+const stateDescriptor = {
   headers: null,
-  loginLoading: false,
-  loginError: null,
   sessionLoading: true
 };
-function booksReducer(state = initialState, action: ReduxAction): AuthState {
-  switch (action.type) {
-    case loginActions.LOG_IN:
-      return { ...state, loginLoading: true };
-    case loginActions.LOG_IN_SUCCESS:
-      return { ...state, headers: action.payload, loginLoading: false, loginError: null };
-    case loginActions.LOG_IN_FAILURE:
-      return { ...state, loginLoading: false, loginError: action.payload };
-    case loginActions.SESSION_RECOVER:
-      return { ...state, headers: action.payload, sessionLoading: false };
-    case loginActions.LOG_OUT:
-      return { ...state, headers: null };
-    default:
-      return state;
+
+const initialState: AuthState = completeState(stateDescriptor, ['sessionLoading']);
+
+const sessionRecoverEffect = () => (state: AuthState, action: ReduxAction) => ({
+  ...state,
+  sessionLoading: false,
+  headers: action.payload
+});
+
+const reducerDescription = {
+  primaryActions: [loginActions.LOG_IN],
+  override: {
+    [loginActions.LOG_OUT]: onSetValue(null),
+    [loginActions.SESSION_RECOVER]: sessionRecoverEffect()
   }
-}
-export default booksReducer;
+};
+
+const authReducer = createReducer(initialState, completeReducer(reducerDescription));
+
+export default authReducer;

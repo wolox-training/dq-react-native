@@ -1,7 +1,7 @@
 export interface AuthState {
   headers: Headers | null;
-  loginLoading: boolean;
-  loginError: string | null;
+  headersLoading: boolean;
+  headersError: string | null;
   sessionLoading: boolean;
 }
 
