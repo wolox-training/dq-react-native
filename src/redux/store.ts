@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { fetchMiddleware } from 'redux-recompose';
 import thunk from 'redux-thunk';
 import Reactotron from '@config/ReactotronConfig';
-import { fetchMiddleware } from 'redux-recompose';
 
 import book from './books/reducer';
 import auth from './auth/reducer';

@@ -1,6 +1,6 @@
 import { AuthState } from '@interfaces/auth';
 import { onSetValue, createReducer, completeState, completeReducer } from 'redux-recompose';
-import { ReduxAction, ReduxEffect } from '@interfaces/redux';
+import { ReduxAction } from '@interfaces/redux';
 
 import { actions as loginActions } from './actions';
 
@@ -11,7 +11,7 @@ const stateDescriptor = {
 
 const initialState: AuthState = completeState(stateDescriptor, ['sessionLoading']);
 
-const sessionRecoverEffect: ReduxEffect = () => (state: AuthState, action: ReduxAction) => ({
+const sessionRecoverEffect = () => (state: AuthState, action: ReduxAction) => ({
   ...state,
   sessionLoading: false,
   headers: action.payload
@@ -25,6 +25,6 @@ const reducerDescription = {
   }
 };
 
-const booksReducer = createReducer(initialState, completeReducer(reducerDescription));
+const authReducer = createReducer(initialState, completeReducer(reducerDescription));
 
-export default booksReducer;
+export default authReducer;
