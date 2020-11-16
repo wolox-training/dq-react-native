@@ -1,10 +1,10 @@
 import React from 'react';
 import { Image, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import searchIcon from '@assets/ic_gray_search.png';
 import deleteIcon from '@assets/ic_gray_cross.png';
 import { actionCreators } from '@redux/books/actions';
-import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '@interfaces/redux';
 
 import styles from './styles';
