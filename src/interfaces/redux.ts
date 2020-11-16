@@ -11,5 +11,3 @@ export interface ReduxAction {
   payload: any;
   target: string;
 }
-
-export type ReduxEffect = (...args: any[]) => (state: any, action: ReduxAction) => any;
