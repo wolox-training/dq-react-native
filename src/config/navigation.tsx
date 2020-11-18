@@ -1,11 +1,11 @@
 import React from 'react';
+import { TransitionPresets } from '@react-navigation/stack';
 import { CERULEAN, WHITE } from '@constants/colors';
 import NavBackground from '@components/NavBackground';
 import { NAV_HEIGHT } from '@constants/commonStyles';
 import LogOutIcon from '@components/LogOutIcon';
 import SearchIcon from '@components/SearchIcon';
-import { TransitionPresets } from '@react-navigation/stack';
-import SearchBar from '@app/components/SearchBar';
+import SearchBar from '@components/SearchBar';
 
 export const stackNavigatorConfig = {
   headerTitleStyle: {

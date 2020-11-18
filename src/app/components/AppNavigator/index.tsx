@@ -34,7 +34,7 @@ import LoginScreen from '@screens/LoginScreen';
 import TabIcon from '@components/TabIcon';
 import { AppState } from '@interfaces/redux';
 import actionCreators from '@redux/auth/actions';
-import BookSearchScreen from '@app/screens/BookSearchScreen';
+import BookSearchScreen from '@screens/BookSearchScreen';
 
 const LibraryStackNavigator = createStackNavigator();
 const WishlistStackNavigator = createStackNavigator();

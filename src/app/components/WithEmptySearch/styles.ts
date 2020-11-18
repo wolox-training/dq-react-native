@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 import { WHITE, TUNDORA } from '@constants/colors';
 import { FONT_BOLD } from '@constants/fontWeights';
 
+const ICON_SIZE = 60;
+
 export default StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -10,8 +12,8 @@ export default StyleSheet.create({
     backgroundColor: WHITE
   },
   image: {
-    height: 60,
-    width: 60
+    height: ICON_SIZE,
+    width: ICON_SIZE
   },
   title: {
     fontSize: 15,

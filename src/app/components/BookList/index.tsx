@@ -1,9 +1,9 @@
 import React from 'react';
 import { FlatList, ListRenderItem } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { NAV_MARGIN } from '@constants/commonStyles';
 import { Book } from '@interfaces/book';
 import BookCell from '@components/BookCell';
-import { useNavigation } from '@react-navigation/native';
 import { DETAIL_SCREEN } from '@constants/routes';
 
 import styles from './styles';
