@@ -16,7 +16,7 @@ export const SHADOW = {
 };
 
 export const BUTTON: ViewStyle = {
-  marginHorizontal: 30,
+  width: 300,
   height: 44,
   borderRadius: 22,
   justifyContent: 'center'

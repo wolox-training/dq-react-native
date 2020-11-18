@@ -13,6 +13,7 @@ export default StyleSheet.create({
     backgroundColor: WHITE,
     margin: 20,
     borderRadius: 5,
+    alignItems: 'center',
     ...SHADOW
   },
   infoContainer: {
@@ -39,6 +40,12 @@ export default StyleSheet.create({
     borderColor: CERULEAN,
     marginBottom: 10,
     ...BUTTON
+  },
+  checkIcon: {
+    height: 20,
+    width: 20,
+    alignSelf: 'center',
+    position: 'absolute'
   },
   wishButtonText: {
     ...BUTTON_TEXT_FORMAT,
