@@ -11,14 +11,17 @@ import {
   LOADING_SCREEN,
   LOG_IN_SCREEN,
   RENTAL_STACK,
+  SEARCH_SCREEN,
   SETTINGS_STACK,
   TAB_MENU,
   WISHLIST_STACK
 } from '@constants/routes';
 import {
   addNewStackConfig,
+  homeConfig,
   libraryStackConfig,
   rentalsStackConfig,
+  searchConfig,
   settingsStackConfig,
   stackNavigatorConfig,
   tabBarOptions,
@@ -31,6 +34,7 @@ import LoginScreen from '@screens/LoginScreen';
 import TabIcon from '@components/TabIcon';
 import { AppState } from '@interfaces/redux';
 import actionCreators from '@redux/auth/actions';
+import BookSearchScreen from '@screens/BookSearchScreen';
 
 const LibraryStackNavigator = createStackNavigator();
 const WishlistStackNavigator = createStackNavigator();
@@ -43,8 +47,13 @@ const comingSoonInitialParams = { text: 'Coming Soon' };
 function LibraryStackScreen() {
   return (
     <LibraryStackNavigator.Navigator initialRouteName={HOME_SCREEN} screenOptions={stackNavigatorConfig}>
-      <LibraryStackNavigator.Screen name={HOME_SCREEN} component={HomeScreen} />
+      <LibraryStackNavigator.Screen name={HOME_SCREEN} component={HomeScreen} options={homeConfig} />
       <LibraryStackNavigator.Screen name={DETAIL_SCREEN} component={DetailScreen} />
+      <LibraryStackNavigator.Screen
+        name={SEARCH_SCREEN}
+        component={BookSearchScreen}
+        options={searchConfig}
+      />
     </LibraryStackNavigator.Navigator>
   );
 }

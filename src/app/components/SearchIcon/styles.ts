@@ -5,7 +5,7 @@ export default StyleSheet.create({
   image: {
     height: ICON_SIZE,
     width: ICON_SIZE,
-    marginBottom: 10,
-    marginLeft: 20
+    marginBottom: 15,
+    marginRight: 10
   }
 });
