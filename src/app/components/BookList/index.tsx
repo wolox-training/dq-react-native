@@ -5,6 +5,7 @@ import { NAV_MARGIN } from '@constants/commonStyles';
 import { Book } from '@interfaces/book';
 import BookCell from '@components/BookCell';
 import { DETAIL_SCREEN } from '@constants/routes';
+import GenericText from '@components/GenericText';
 
 import styles from './styles';
 
@@ -23,7 +24,8 @@ function BookList(props: Props) {
       data={props.books}
       renderItem={renderBook}
       keyExtractor={keyExtractor}
-      contentContainerStyle={NAV_MARGIN}
+      contentContainerStyle={[NAV_MARGIN, !props.books.length && styles.content]}
+      ListEmptyComponent={() => <GenericText text="No Books Found" />}
     />
   );
 }
