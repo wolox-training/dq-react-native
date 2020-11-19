@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Image, Text, View, Animated, TouchableOpacity } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { Book } from '@interfaces/book';
 import placeholder from '@assets/img_book6.png';
 import icon from '@assets/ic_check.png';
-import { CERULEAN, DARK_GREEN, WHITE, SUCCESS_GREEN } from '@constants/colors';
+import { CERULEAN, DARK_GREEN, WHITE, SUCCESS_GREEN, TURQUOISE } from '@constants/colors';
 
 import styles from './styles';
 
@@ -96,9 +97,13 @@ function BookDetail({ book }: Props) {
           </Animated.Text>
         )}
       </AnimatedTouchableOpacity>
-      <View style={styles.rentButton}>
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={[CERULEAN, TURQUOISE]}
+        style={styles.rentButton}>
         <Text style={styles.rentButtonText}>RENT</Text>
-      </View>
+      </LinearGradient>
     </View>
   );
 }
