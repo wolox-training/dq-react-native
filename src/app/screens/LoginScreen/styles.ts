@@ -38,7 +38,8 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: WHITE,
-    fontWeight: FONT_BOLD
+    fontWeight: FONT_BOLD,
+    alignSelf: 'center'
   },
   disabledButtonText: {
     color: DISABLED_BUTTON_COLOR
