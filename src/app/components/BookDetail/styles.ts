@@ -44,8 +44,7 @@ export default StyleSheet.create({
   checkIcon: {
     height: 20,
     width: 20,
-    alignSelf: 'center',
-    position: 'absolute'
+    alignSelf: 'center'
   },
   wishButtonText: {
     ...BUTTON_TEXT_FORMAT,

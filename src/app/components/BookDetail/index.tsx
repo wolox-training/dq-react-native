@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Image, Text, View, Animated, TouchableOpacity } from 'react-native';
 import { Book } from '@interfaces/book';
 import placeholder from '@assets/img_book6.png';
 import icon from '@assets/ic_check.png';
-import { CERULEAN, DARK_GREEN, WHITE } from '@constants/colors';
-
-import { SUCCESS_GREEN } from '../../../constants/colors';
+import { CERULEAN, DARK_GREEN, WHITE, SUCCESS_GREEN } from '@constants/colors';
 
 import styles from './styles';
 
@@ -13,15 +11,18 @@ interface Props {
   book: Book;
 }
 
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
+
+const ANIMATION_DURATION = 500;
+
 function BookDetail({ book }: Props) {
-  const animationDuration = 500;
   const { image, author, title, year, genre } = book;
-  const widthAnimation = new Animated.Value(300);
-  const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
-  const textFadeAnimation = new Animated.Value(1);
-  const checkMarkFadeAnimation = new Animated.Value(0);
-  const backgroundAnimation = new Animated.Value(0);
-  const borderAnimation = new Animated.Value(0);
+  const widthAnimation = useRef(new Animated.Value(300)).current;
+  const textFadeAnimation = useRef(new Animated.Value(1)).current;
+  const checkMarkFadeAnimation = useRef(new Animated.Value(0)).current;
+  const backgroundAnimation = useRef(new Animated.Value(0)).current;
+  const borderAnimation = useRef(new Animated.Value(0)).current;
+  const [bookRented, onBookRented] = useState(false);
   const borderColor = borderAnimation.interpolate({
     inputRange: [0, 1],
     outputRange: [CERULEAN, DARK_GREEN]
@@ -31,31 +32,33 @@ function BookDetail({ book }: Props) {
     outputRange: [WHITE, SUCCESS_GREEN]
   });
   const onPress = () => {
-    Animated.timing(widthAnimation, {
-      toValue: 44,
-      duration: animationDuration,
-      useNativeDriver: false
-    }).start();
-    Animated.timing(backgroundAnimation, {
-      toValue: 1,
-      duration: animationDuration,
-      useNativeDriver: false
-    }).start();
-    Animated.timing(borderAnimation, {
-      toValue: 1,
-      duration: animationDuration,
-      useNativeDriver: false
-    }).start();
-
+    Animated.parallel([
+      Animated.timing(widthAnimation, {
+        toValue: 44,
+        duration: ANIMATION_DURATION,
+        useNativeDriver: false
+      }),
+      Animated.timing(backgroundAnimation, {
+        toValue: 1,
+        duration: ANIMATION_DURATION,
+        useNativeDriver: false
+      }),
+      Animated.timing(borderAnimation, {
+        toValue: 1,
+        duration: ANIMATION_DURATION,
+        useNativeDriver: false
+      })
+    ]).start();
     Animated.timing(textFadeAnimation, {
       toValue: 0,
-      duration: animationDuration / 2,
-      useNativeDriver: false
+      duration: ANIMATION_DURATION / 2,
+      useNativeDriver: true
     }).start(() => {
+      onBookRented(true);
       Animated.timing(checkMarkFadeAnimation, {
         toValue: 1,
-        duration: animationDuration / 2,
-        useNativeDriver: false
+        duration: ANIMATION_DURATION / 2,
+        useNativeDriver: true
       }).start();
     });
   };
@@ -85,10 +88,13 @@ function BookDetail({ book }: Props) {
       <AnimatedTouchableOpacity
         style={[styles.wishButton, { width: widthAnimation, backgroundColor, borderColor }]}
         onPress={onPress}>
-        <Animated.Image source={icon} style={[styles.checkIcon, { opacity: checkMarkFadeAnimation }]} />
-        <Animated.Text style={[styles.wishButtonText, { opacity: textFadeAnimation }]}>
-          ADD TO WISHLIST
-        </Animated.Text>
+        {bookRented ? (
+          <Animated.Image source={icon} style={[styles.checkIcon, { opacity: checkMarkFadeAnimation }]} />
+        ) : (
+          <Animated.Text style={[styles.wishButtonText, { opacity: textFadeAnimation }]}>
+            ADD TO WISHLIST
+          </Animated.Text>
+        )}
       </AnimatedTouchableOpacity>
       <View style={styles.rentButton}>
         <Text style={styles.rentButtonText}>RENT</Text>
