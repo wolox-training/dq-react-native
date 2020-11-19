@@ -17,7 +17,7 @@ const ANIMATION_DURATION = 500;
 
 function BookDetail({ book }: Props) {
   const { image, author, title, year, genre } = book;
-  const widthAnimation = useRef(new Animated.Value(300)).current;
+  const widthAnimation = useRef(new Animated.Value(250)).current;
   const textFadeAnimation = useRef(new Animated.Value(1)).current;
   const checkMarkFadeAnimation = useRef(new Animated.Value(0)).current;
   const backgroundAnimation = useRef(new Animated.Value(0)).current;
