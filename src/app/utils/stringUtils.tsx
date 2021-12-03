@@ -18,9 +18,7 @@ export const getInitials = (text: string) => {
 
 export const keepNumbers = (text: string) => {
   if (includesDigits(text)) {
-    console.log([...text])
     let numbers = [...text].filter( element => includesDigits(element) )
-    console.log(numbers)
     return numbers.join('')
   } else {
     return ''
