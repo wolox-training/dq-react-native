@@ -40,7 +40,7 @@ export const searchConfig = {
 
 export const libraryStackConfig = { title: 'Library' };
 
-export const wishlistStackConfig = { title: 'Wishlist' };
+export const wishlistStackConfig = { title: 'Token' };
 
 export const addNewStackConfig = { title: 'Add New' };
 
