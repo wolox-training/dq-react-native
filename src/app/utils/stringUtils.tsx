@@ -9,9 +9,20 @@ export const includesDigits = (text: string) => {
 };
 
 export const getInitials = (text: string) => {
-    const words = text.split(' ')
-    let initials = words.flatMap(element => {
-        return element.charAt(0)
-      }).join('')
-    return initials;
-  };
+  const words = text.split(' ')
+  let initials = words.flatMap(element => {
+      return element.charAt(0)
+    }).join('')
+  return initials;
+};
+
+export const keepNumbers = (text: string) => {
+  if (includesDigits(text)) {
+    console.log([...text])
+    let numbers = [...text].filter( element => includesDigits(element) )
+    console.log(numbers)
+    return numbers.join('')
+  } else {
+    return ''
+  }
+};
