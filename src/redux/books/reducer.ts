@@ -8,7 +8,7 @@ const initialStateDescriptor = {
   bookSearch: ''
 };
 
-const initialState: BookState = completeState(initialStateDescriptor, ['bookSearch']);
+export const initialState: BookState = completeState(initialStateDescriptor, ['bookSearch']);
 
 const reducerDescription = {
   primaryActions: [bookActions.GET_BOOKS],
