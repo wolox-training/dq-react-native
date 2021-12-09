@@ -9,7 +9,9 @@ import auth from './auth/reducer';
 const rootReducer = combineReducers({ book, auth });
 const middlewares = [applyMiddleware(thunk, fetchMiddleware)];
 if (__DEV__) {
-  middlewares.push(Reactotron.createEnhancer());
+  if (process.env.JEST_WORKER_ID == undefined) {
+    middlewares.push(Reactotron.createEnhancer());
+  }
 }
 const store = createStore(rootReducer, compose(...middlewares));
 export default store;
