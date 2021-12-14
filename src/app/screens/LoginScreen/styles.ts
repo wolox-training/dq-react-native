@@ -49,5 +49,26 @@ export default StyleSheet.create({
   },
   padding: {
     paddingTop: 20
+  },
+  radio1: {
+    height: 20,
+    width: 20,
+    borderRadius: 10,
+    borderColor: WHITE,
+    marginRight: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1
+  },
+  radio2: {
+    borderRadius: 8,
+    height: 16,
+    width: 16,
+    backgroundColor: WHITE
+  },
+  rememberContainer: {
+    paddingVertical: 10,
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 });

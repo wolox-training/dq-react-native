@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Image,
@@ -9,7 +9,8 @@ import {
   StatusBar,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  View
 } from 'react-native';
 import background from '@assets/bc_inicio.png';
 import logo from '@assets/Group.png';
@@ -18,8 +19,11 @@ import { isValidEmail, isValidPassword } from '@constants/utils';
 import { AppState } from '@interfaces/redux';
 import WithLoader from '@components/WithLoader';
 import { BLACK } from '@constants/colors';
+import * as Keychain from 'react-native-keychain';
 
 import styles from './styles';
+import { capitalize } from '@app/utils/stringUtils';
+import { getBiometricsFlag } from '@services/LocalStorage';
 
 function LoginScreen() {
   const [userValue, onChangeUserText] = useState('');
@@ -27,6 +31,9 @@ function LoginScreen() {
   const [userError, onChangeUserError] = useState(false);
   const [passwordError, onChangePasswordError] = useState(false);
   const [buttonEnabled, onButtonChanged] = useState(false);
+  const [rememberEnabled, onRememberEnabledChanged] = useState(false);
+  const [hasUserRemembered, onHasUserRememberedChanged] = useState(false);
+
   const dispatch = useDispatch();
   const handleUserEndEditing = () => {
     onChangeUserError(!isValidEmail(userValue));
@@ -43,10 +50,31 @@ function LoginScreen() {
     onButtonChanged(isValidEmail(userValue) && isValidPassword(passwordValue));
   };
   const onPress = () => {
-    dispatch(actionCreators.logIn(userValue, passwordValue));
+    dispatch(actionCreators.logIn(userValue, passwordValue, rememberEnabled));
   };
+
+  const onRememberPress = () => {
+    onRememberEnabledChanged(!rememberEnabled)
+  };
+
   const loginLoading = useSelector((state: AppState) => state.auth.headersLoading);
   const loginError = useSelector((state: AppState) => state.auth.headersError);
+  const [biometricType, onBiometricTypeChanged] = useState('');
+  const onBiometricsPress = async () => {
+    const credentials = await Keychain.getGenericPassword();
+    if (credentials) {
+      dispatch(actionCreators.logIn(credentials.username, credentials.password, true));
+    } else {
+      console.warn('No credentials stored');
+    }
+  };
+
+  useEffect(() => {
+    Keychain.getSupportedBiometryType().then((value) => {
+      onBiometricTypeChanged(value ?? '')})
+    getBiometricsFlag().then((value) => onHasUserRememberedChanged(value ?? false))
+  }, []);
+
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor={BLACK} />
@@ -79,6 +107,17 @@ function LoginScreen() {
               onPress={onPress}>
               <Text style={[styles.buttonText, !buttonEnabled && styles.disabledButtonText]}>LOG IN</Text>
             </TouchableOpacity>
+            { (biometricType !== '') && !hasUserRemembered && <TouchableOpacity
+              style={styles.rememberContainer}
+              onPress={onRememberPress}>
+              <View style={styles.radio1}><View style={rememberEnabled && styles.radio2}></View></View>
+              <Text style={styles.buttonText}>Activate {capitalize(biometricType)} Access</Text>
+            </TouchableOpacity> }
+            { (biometricType !== '') && hasUserRemembered && <TouchableOpacity
+              style={[styles.button]}
+              onPress={onBiometricsPress}>
+              <Text style={styles.buttonText}>LOG IN WITH {biometricType.toUpperCase()}</Text>
+            </TouchableOpacity>}
             {loginError && <Text style={[styles.error, styles.padding]}>Invalid credentials</Text>}
           </KeyboardAvoidingView>
           <Text style={styles.footer}>Designed, developed and used by woloxers</Text>

@@ -24,3 +24,14 @@ export const keepNumbers = (text: string) => {
     return ''
   }
 };
+
+export const capitalize = (string: string) => {
+  if (string == '') { return '' }
+  const noExtraSpaces = string.replace(/\s+/g,' ').trim();
+  const words = noExtraSpaces.split(' ');
+  console.log(words.length)
+  const capitalizedWords = words.map(element => {
+    return element[0].toUpperCase() + element.toLowerCase().slice(1)
+  })
+  return capitalizedWords.join(' ')
+}
