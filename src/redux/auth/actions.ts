@@ -1,8 +1,9 @@
 import { Dispatch } from 'redux';
 import { createTypes, completeTypes, withPostSuccess } from 'redux-recompose';
-import { getHeaders, removeHeaders, storeHeaders } from '@services/LocalStorage';
+import { getHeaders, removeHeaders, storeBiometricsFlag, storeHeaders } from '@services/LocalStorage';
 import AuthService from '@services/AuthService';
 import api from '@config/api';
+import * as Keychain from 'react-native-keychain';
 
 export const actions = createTypes(completeTypes(['LOG_IN'], ['SESSION_RECOVER', 'LOG_OUT']), '@@AUTH');
 const TARGETS = {
@@ -15,7 +16,7 @@ const getHeadersObj = (headers: any) => {
 };
 
 export const actionCreators = {
-  logIn: (user: string, password: string) => ({
+  logIn: (user: string, password: string, remember: boolean) => ({
     type: actions.LOG_IN,
     target: TARGETS.HEADERS,
     service: AuthService.login,
@@ -25,10 +26,15 @@ export const actionCreators = {
       withPostSuccess((_: any, response: any) => {
         const headersObj = getHeadersObj(response.headers!);
         api.setHeaders(headersObj);
+        storeBiometricsFlag(remember);
+        if (remember) {
+          Keychain.setGenericPassword(user, password, {accessControl: Keychain.ACCESS_CONTROL.BIOMETRY_ANY_OR_DEVICE_PASSCODE});
+        }
         storeHeaders(headersObj);
       })
     ]
   }),
+  
   rememberUser: () => async (dispatch: Dispatch) => {
     const headers = await getHeaders();
     if (headers) api.setHeaders(headers);

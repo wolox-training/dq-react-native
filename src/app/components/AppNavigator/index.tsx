@@ -35,6 +35,7 @@ import TabIcon from '@components/TabIcon';
 import { AppState } from '@interfaces/redux';
 import actionCreators from '@redux/auth/actions';
 import BookSearchScreen from '@screens/BookSearchScreen';
+import SettingsScreen from '@screens/SettingsScreen';
 
 const LibraryStackNavigator = createStackNavigator();
 const WishlistStackNavigator = createStackNavigator();
@@ -103,7 +104,7 @@ function SettingsStackScreen() {
       screenOptions={stackNavigatorConfig}>
       <SettingsStackNavigator.Screen
         name={COMING_SOON_SCREEN}
-        component={ComingSoonScreen}
+        component={SettingsScreen}
         initialParams={comingSoonInitialParams}
       />
     </SettingsStackNavigator.Navigator>

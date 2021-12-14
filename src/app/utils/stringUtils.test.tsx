@@ -1,4 +1,4 @@
-import { includesDigits, getInitials, keepNumbers } from "./stringUtils";
+import { includesDigits, getInitials, keepNumbers, capitalize } from "./stringUtils";
 
 describe('includesDigit', () => {
    test('string with digits', () => {
@@ -45,5 +45,26 @@ describe('keepNumbers', () => {
    });
    test('no numbers', () => {
       expect(keepNumbers('Diego Andres Quiros')).toEqual('');
+   });
+})
+
+describe('Capitalize', () => {
+   test('all caps', () => {
+      expect(capitalize('DIEGO QUIROS')).toEqual('Diego Quiros');
+   });
+   test('extra spaces', () => {
+      expect(capitalize('diego      QUIROS')).toEqual('Diego Quiros');
+   });
+   test('all lowercase', () => {
+      expect(capitalize('diego quiros')).toEqual('Diego Quiros');
+   });
+   test('empty', () => {
+      expect(capitalize('')).toEqual('');
+   });
+   test('already capitalized', () => {
+      expect(capitalize('Diego Quiros')).toEqual('Diego Quiros');
+   });
+   test('no spaces', () => {
+      expect(capitalize('DiegoQuiros')).toEqual('Diegoquiros');
    });
 })
